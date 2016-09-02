@@ -1,0 +1,28 @@
+package com.design.pattern.tetrastar.encryption;
+
+public class SimpleEncryptionAlgorithm implements EncryptionAlgorithm {
+
+    /**
+     *  Simple Encryption is just reversing passed string
+     * @param dataToEncrypt
+     * @return
+     */
+    @Override
+    public String encrypt(String dataToEncrypt) {
+        if(dataToEncrypt == null || dataToEncrypt.length() <= 1) {
+            return dataToEncrypt;
+        }
+        StringBuffer sb = new StringBuffer(dataToEncrypt);
+        return sb.reverse().toString();
+    }
+
+    /**
+     *  Decryption is same as encrypt because it will just reverse already reversed string to return original one
+     * @param dataToDecrypt
+     * @return
+     */
+    @Override
+    public String decrypt(String dataToDecrypt) {
+        return encrypt(dataToDecrypt);
+    }
+}
