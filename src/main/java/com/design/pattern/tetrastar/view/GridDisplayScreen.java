@@ -1,4 +1,7 @@
 package com.design.pattern.tetrastar.view;
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ */
 
 import com.design.pattern.tetrastar.enums.PeopleType;
 import com.design.pattern.tetrastar.generator.IdGenerator;

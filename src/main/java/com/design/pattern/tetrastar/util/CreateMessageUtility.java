@@ -1,4 +1,7 @@
 package com.design.pattern.tetrastar.util;
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ */
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -9,10 +12,6 @@ import javax.swing.JOptionPane;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Rachna Gajre <rgajre@scu.edu>
- */
 public class CreateMessageUtility {
     
     public static void createMsg(String msg) {

@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Rachna Gajre <rgajre@scu.edu>
+ *  @author Akshata, Rachna and Shweta.
  */
 public abstract class TIterator implements Iterator<Object> {
 	

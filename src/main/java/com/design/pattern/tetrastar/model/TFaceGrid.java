@@ -1,5 +1,8 @@
 package com.design.pattern.tetrastar.model;
-
+/**
+ * 
+ *  @author Akshata, Rachna and Shweta.
+ */
 
 public class TFaceGrid {
 

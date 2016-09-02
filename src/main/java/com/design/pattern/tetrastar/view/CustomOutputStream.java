@@ -4,15 +4,14 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.view;
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ */
 
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.swing.JTextArea;
 
-/**
- *
- * @author Rachna Gajre <rgajre@scu.edu>
- */
 public class CustomOutputStream extends OutputStream {
     private JTextArea textArea;
      

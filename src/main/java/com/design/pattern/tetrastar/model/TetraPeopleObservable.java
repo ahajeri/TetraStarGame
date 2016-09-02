@@ -1,11 +1,10 @@
 package com.design.pattern.tetrastar.model;
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ */
 
 import java.util.Observable;
 
-/**
- *
- * @author Rachna Gajre <rgajre@scu.edu>
- */
 public class TetraPeopleObservable extends Observable {
     
     @Override

@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
+/**
+ *   @author Akshata, Rachna and Shweta. 
+ */
 
 import com.design.pattern.tetrastar.util.CreateMessageUtility;
 import java.io.IOException;
@@ -14,12 +17,8 @@ import java.util.Observer;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Rachna Gajre <rgajre@scu.edu>
- */
 public class TetraPeopleObserverAndMediator implements Observer {
-
+ 
     public List<TMapBase> mapHomes;
 
     public List<THeroBase> heroBaseHomes;

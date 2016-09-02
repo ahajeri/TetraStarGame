@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
+/**
+ *   @author Akshata, Rachna and Shweta. 
+ */
 
 import com.design.pattern.tetrastar.constants.TetraConstants;
 import com.design.pattern.tetrastar.enums.Direction;
@@ -16,10 +19,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-/**
- *
- * @author Rachna Gajre <rgajre@scu.edu>
- */
+ 
 public class TetraRover extends TetraPeople {
 
     private Image img, image = null;

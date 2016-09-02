@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.encryption;
-
-import com.design.pattern.tetrastar.enums.EncryptionStrategy;
-
 /**
  *
- * @author Rachna Gajre <rgajre@scu.edu>
+ * @author Akshata, Rachna and Shweta.
  */
+import com.design.pattern.tetrastar.enums.EncryptionStrategy;
+
+
 public class EncryptionAlgorithmFactory {
     
     public static EncryptionAlgorithm getEncryptionAlgorithmForStrategy(EncryptionStrategy encryptionStrategy) {
