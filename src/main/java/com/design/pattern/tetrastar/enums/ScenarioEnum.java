@@ -6,12 +6,9 @@ package com.design.pattern.tetrastar.enums;
 
 public enum ScenarioEnum {
 
-    SCENARIO1(1, "Scenario1", "Scenario1:All characters moving"),
-    SCENARIO2(2, "Scenario2", "Scenario2:Hero1 encrypts the map"),
-    SCENARIO3(3, "Scenario3", "Scenario3:Hero1 moves in all directions"),
-    SCENARIO4(4, "Scenario4", "Scenario4:description"),
-    SCENARIO5(5, "Scenario5", "Scenario5:description");
-
+    SCENARIO1(1, "Scenario1", "Scenario1 "),
+    SCENARIO2(2, "Scenario2", "Scenario2 ");
+    
     private int scenarioNumber;
     private String scenarioName;
     private String scenarioDescription;
