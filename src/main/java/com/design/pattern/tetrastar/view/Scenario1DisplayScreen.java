@@ -21,11 +21,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-/**
- * Hero1 moves in all directions
- *
- * @author Rachna Gajre <rgajre@scu.edu>
- */
 public class Scenario1DisplayScreen extends GridDisplayScreen {
 
         private static final Logger logger = Logger.getLogger(Scenario1DisplayScreen.class.getName());
