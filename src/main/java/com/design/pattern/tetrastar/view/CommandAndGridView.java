@@ -44,7 +44,7 @@ public class CommandAndGridView extends AView {
         sidePanelBorder.setTitleColor(Color.WHITE);
         this.sidePanel.setBorder(sidePanelBorder);
         this.sidePanel.setLayout(new FlowLayout());
-        this.sidePanel.setBackground(Color.GRAY);
+        this.sidePanel.setBackground(new Color(29, 60, 25));
         this.sidePanel.setPreferredSize(new Dimension(350,100));
         this.sidePanel.setSize(new Dimension(350,100));
 
@@ -90,11 +90,11 @@ public class CommandAndGridView extends AView {
         this.scenarioDescription.setForeground(Color.WHITE);
 
         this.sidePanel.add(this.setScreen);
-        this.sidePanel.add(Box.createRigidArea(new Dimension(20, 50)));
+        this.sidePanel.add(Box.createRigidArea(new Dimension(300,20)));
         this.sidePanel.add(this.startSimulation);
-        this.sidePanel.add(Box.createRigidArea(new Dimension(20, 50)));
+        this.sidePanel.add(Box.createRigidArea(new Dimension(400,30)));
         this.sidePanel.add(this.resetScreen);
-        this.sidePanel.add(Box.createRigidArea(new Dimension(300, 60)));
+        this.sidePanel.add(Box.createRigidArea(new Dimension(500,60)));
         this.sidePanel.add(this.scenarioDescription);
 
         /**
@@ -110,12 +110,11 @@ public class CommandAndGridView extends AView {
         commandPanelBorder.setTitleColor(Color.WHITE);
         this.consolePanel.setBorder(commandPanelBorder);
         this.consolePanel.setLayout(new FlowLayout());
-        this.consolePanel.setBackground(Color.GRAY);
+        this.consolePanel.setBackground(new Color(29, 60, 25));
         this.consolePanel.setPreferredSize(new Dimension(250,100));
         this.consolePanel.setSize(new Dimension(250, 100));
         JTextArea consoleLogger = new JTextArea(42, 20);
-        consoleLogger.setLineWrap(true); 
-        //
+        consoleLogger.setLineWrap(true);
         consoleLogger.setWrapStyleWord(true);
         consoleLogger.setText("");
         

@@ -61,9 +61,9 @@ public class TMapBase extends Location {
                 starMap.setLocation(this.getGridLocation());
 
                 if (thero.getId() == 1) {
-                    thero.flyToLocation(gridOfLocations, new TFaceGrid(0, 0));
-                } else {
                     thero.flyToLocation(gridOfLocations, new TFaceGrid(6, 6));
+                } else {
+                    thero.flyToLocation(gridOfLocations, new TFaceGrid(0, 0));
                 }
             }
         } else if (people instanceof TetraRover) {
