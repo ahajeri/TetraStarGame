@@ -104,37 +104,45 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 
 			// Hero1 moves demo
 			CreateMessageUtility
-					.createMsg("This Demo shows all inhabits of planet Tetra moves");
-			CreateMessageUtility.createMsg("HERO1 Moves North");
+					.createMsg("All Tetra planet inhabits move demo");
+			CreateMessageUtility.createMsg("HERO1 Moves North Location");
+			System.out.println("HERO1 Moves North Location");
 			hero1.makeInitialMove(Direction.NORTH, gridOfButtons, tHero1Loc);
 			sleepForHalfSecond();
 
 			CreateMessageUtility.createMsg("HERO1 Moves East");
+			System.out.println("HERO1 Moves East Location");
 			hero1.makeMove(Direction.EAST, gridOfButtons);
 			sleepForHalfSecond();
 
 			CreateMessageUtility.createMsg("HERO1 Moves South");
+			System.out.println("HERO1 Moves South Location");
 			hero1.makeMove(Direction.SOUTH, gridOfButtons);
 			sleepForHalfSecond();
 
 			
 			CreateMessageUtility.createMsg("HERO1 Moves East");
+			System.out.println("HERO1 Moves East Location");
 			hero1.makeMove(Direction.EAST, gridOfButtons);
 			sleepForHalfSecond();
 			
 			// Hero2 fly demo
 			CreateMessageUtility.createMsg("HERO2 Fly Demo");
+			System.out.println("HERO2 Fly Demo");
 			CreateMessageUtility.createMsg("HERO2 Moves South");
+			System.out.println("HERO2 Moves South Location");
 			hero2.makeMove(Direction.SOUTH, gridOfButtons);
 			
 			sleepForHalfSecond();
 
 			CreateMessageUtility
-					.createMsg("Hero2 Request to fly to different location.");
+					.createMsg("HERO2 Request flier to fly  at different location");
+			System.out.println("HERO2 Request flier to fly at different location");
 			hero2.requestToFly();
 			sleepForHalfSecond();
 			
-			CreateMessageUtility.createMsg("hero2 fly TO  empty Location");
+			CreateMessageUtility.createMsg("HERO2 fly to empty Location");
+			System.out.println("HERO2 fly to empty Location");
 	        try {
 	            hero2.flyToLocation(gridOfButtons, new TFaceGrid(1, 4));
 	        } catch (Exception e) {
@@ -144,30 +152,38 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 	        
 
 			// Vader fly moves demo
-			CreateMessageUtility.createMsg("Vader moves Demo");
-			CreateMessageUtility.createMsg("Vader flies to a empty location");
+			CreateMessageUtility.createMsg("VADER moves Demo");
+			System.out.println("VADER moves Demo");
+			CreateMessageUtility.createMsg("VADER flies to a empty location");
+			System.out.println("VADER flies to a empty location");
 			vader.flyToLocation(gridOfButtons, new TFaceGrid(2, 5));
 			sleepForHalfSecond();
 			
 			hero1.setVaderExit(true);
 			CreateMessageUtility
-					.createMsg("Vader try to fly back to base location");
+					.createMsg("VADER try to fly back to his base location");
+			System.out.println("VADER try to fly back to his base location");
 			vader.flyToLocation(gridOfButtons, tVaderLoc);
 			sleepForHalfSecond();
 
 			// Rover Demo
-			CreateMessageUtility.createMsg("Rover Moves Demo");
-			CreateMessageUtility.createMsg("Rover1 Moves North");
+			CreateMessageUtility.createMsg("ROVER Moves Demo");
+			System.out.println("ROVER Moves Demo");
+			CreateMessageUtility.createMsg("ROVER1 Moves North location");
+			System.out.println("ROVER1 Moves North location");
 			rover1.makeInitialMove(Direction.NORTH, gridOfButtons, tRover1Loc);
 			sleepForHalfSecond();
 
-			CreateMessageUtility.createMsg("Rover1 Moves East");
+			CreateMessageUtility.createMsg("ROVER1 Moves East location");
+			System.out.println("ROVER1 Moves East location");
 			rover1.makeMove(Direction.EAST, gridOfButtons);
 			sleepForHalfSecond();
 
-			CreateMessageUtility.createMsg("Rover2 Trying to Fly Demo");
+			CreateMessageUtility.createMsg("ROVER2 try to Fly Demo");
+			System.out.println("ROVER2 try to Fly Demo");
 			CreateMessageUtility
-					.createMsg("Rover2 wants to fly to different location.");
+					.createMsg("ROVER2 wants to fly to different location");
+			System.out.println("ROVER2 wants to fly to different location");
 			rover2.requestToFly();
 			sleepForHalfSecond();
 		} catch (Exception ex) {
