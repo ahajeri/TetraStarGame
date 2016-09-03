@@ -114,7 +114,8 @@ public class CommandAndGridView extends AView {
         this.consolePanel.setPreferredSize(new Dimension(250,100));
         this.consolePanel.setSize(new Dimension(250, 100));
         JTextArea consoleLogger = new JTextArea(42, 20);
-        consoleLogger.setLineWrap(true);
+        consoleLogger.setLineWrap(true); 
+        //
         consoleLogger.setWrapStyleWord(true);
         consoleLogger.setText("");
         
