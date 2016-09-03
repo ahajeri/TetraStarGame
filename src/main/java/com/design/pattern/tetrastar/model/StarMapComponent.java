@@ -13,30 +13,17 @@ import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Rachna Gajre <rgajre@scu.edu>
- */
 public abstract class StarMapComponent implements Cloneable {
 
-    /**
-     * Id of StarMap.
-     */
+ 
     int starComponentID;
 
-    /**
-     * Number of maps in atlas.
-     */
     int numberItems;
 
-    /**
-     * Grid location of StarMap.
-     */
+    int restorationCounter;
+ 
     TFaceGrid mapLocation;
 
-    /**
-     * Encryption Status.
-     */
      boolean encryptionStatus;
      
      public void setEncryptionStatus(boolean encryptionStatus)
@@ -44,31 +31,20 @@ public abstract class StarMapComponent implements Cloneable {
     	 this.encryptionStatus = encryptionStatus;
      }
 
-    /**
-     * To check whether StarMap is encrypted or not.
-     *
-     * @return
-     */
+    
+    //To check whether StarMap is encrypted or not.
+ 
     public boolean isEncrypted() {
         return encryptionStatus;
     }
 
-    /**
-     * To support cloning of StarMaps.
-     *
-     * @return
-     */
+    //To support cloning of StarMaps.
     @Override
     public StarMapComponent clone() throws CloneNotSupportedException {
         return (StarMapComponent) super.clone();
     }
 
-    /**
-     * To check whether StarMap exists at passed Location or not.
-     *
-     * @param location
-     * @return
-     */
+   //To check whether StarMap exists at passed Location or not.
     boolean showSignal(TFaceGrid location) {
         if (location.getRow() == mapLocation.getRow() && location.getColumn() == mapLocation.getColumn()) {
             return true;
@@ -76,70 +52,37 @@ public abstract class StarMapComponent implements Cloneable {
         return false;
     }
 
-    /**
-     * Set the location of StarMap.
-     *
-     * @param newLoc
-     */
+   //Set the location of StarMap.
     public void setLocation(TFaceGrid newLoc) {
         mapLocation = newLoc;
     }
 
-    /**
-     * To check whether StarMap is encrypted by passed heroID or not.
-     *
-     * @param heroID
-     * @return
-     */
+    //To check whether StarMap is encrypted by passed heroID or not.
     abstract boolean isEncryptedByMe(int heroID);
 
-    /**
-     * Encrypt the Map.
-     *
-     * @param heroID
-     * @param date
-     * @param Symbol
-     */
+    //Encrypt the Map.
     abstract void encrypt(int heroID, Date date, char Symbol);
 
-    /**
-     * Decrypt the Map.
-     *
-     * @param heroID
-     */
+    ///Decrypt the Map.
     abstract void decrypt(int heroID);
 
-    /**
-     * Display the StarMap Contents.
-     */
+    //Display the StarMap Contents.
     abstract void display();
 
-    /**
-     * Get the message.
-     *
-     * @return
-     */
     abstract String getBody();
 
-    /**
-     * To display the encrypted content.
-     *
-     * @return
-     */
     abstract String encryptedDisplay();
 
-    /**
-     * Get the encrypted Symbol.
-     *
-     * @return
-     */
     abstract char getEncryptedSymbol();
 
-    /**
-     * Set the encryption Algorithm.
-     *
-     * @param encrypt
-     */
     abstract void setEncryptionAlgorithm(EncryptionAlgorithm encrypt);
+
+	public int getRestorationCounter() {
+		return restorationCounter;
+	}
+
+	public void setRestorationCounter(int restorationCounter) {
+		this.restorationCounter = restorationCounter;
+	}
 
 }

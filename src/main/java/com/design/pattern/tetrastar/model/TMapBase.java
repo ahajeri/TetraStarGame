@@ -57,13 +57,28 @@ public class TMapBase extends Location {
             } else {
                 String message = "Hero enters MapBase with encrypted map";
                 CreateMessageUtility.createMsg(message);
+                
+                starMap.setEncryptionStatus(true);
+            	
+                boolean enc = starMap.isEncrypted();
+            	if(enc == true){
+            		int restoreCount = starMap.getRestorationCounter();
+            		System.out.println("\n StarAtlas was already encrypted before VADER stoles\n");
+            		System.out.println("Therefore, HERO1 increments restoration counter \n");
+                    System.out.println("Old Restoration counter:" + restoreCount);
+                    restoreCount = restoreCount + 1;
+                    starMap.setRestorationCounter(restoreCount);
+                    System.out.println("New Restoration counter:" + starMap.getRestorationCounter() + " \n");
+            	}
+            	
+                
                 starMap = thero.getOldstarMap();
                 starMap.setLocation(this.getGridLocation());
 
                 if (thero.getId() == 1) {
-                    thero.flyToLocation(gridOfLocations, new TFaceGrid(0, 0));
-                } else {
                     thero.flyToLocation(gridOfLocations, new TFaceGrid(6, 6));
+                } else {
+                    thero.flyToLocation(gridOfLocations, new TFaceGrid(0, 0));
                 }
             }
         } else if (people instanceof TetraRover) {

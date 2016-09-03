@@ -19,12 +19,12 @@ public class StarAtlasComposite extends StarMapComponent {
     /**
      * List of StarMaps.
      */
-    List<StarMapComponent> lmaps = new ArrayList<StarMapComponent>();
+    List<StarMapComponent> listStarMapComponent = new ArrayList<StarMapComponent>();
 
     /**
      * External Iterator used to traverse several StarMaps in StarAtlas.
      */
-    StarMapComponentIterator lsmcIterator;
+    StarMapComponentIterator starMapComponentIterator;
 
     /**
      * Initialize StarAtlas.
@@ -44,8 +44,8 @@ public class StarAtlasComposite extends StarMapComponent {
      *
      * @param lsmc
      */
-    private void createIterator(List<StarMapComponent> lsmc) {
-        this.lsmcIterator = new StarMapComponentIterator(lsmc);
+    private void createIterator(List<StarMapComponent> listStarMapComponent) {
+        this.starMapComponentIterator = new StarMapComponentIterator(listStarMapComponent);
     }
 
     /**
@@ -68,10 +68,10 @@ public class StarAtlasComposite extends StarMapComponent {
         StarMapComponent map;
 
         encryptionStatus = true;
-        createIterator(lmaps);
-        lsmcIterator.begin();
-        if (lsmcIterator.hasNext()) {
-            map = (StarMapComponent) lsmcIterator.next();
+        createIterator(listStarMapComponent);
+        starMapComponentIterator.begin();
+        if (starMapComponentIterator.hasNext()) {
+            map = (StarMapComponent) starMapComponentIterator.next();
             return map.getEncryptedSymbol();
         }
 
@@ -90,10 +90,10 @@ public class StarAtlasComposite extends StarMapComponent {
         StarMapComponent map;
 
         encryptionStatus = true;
-        createIterator(lmaps);
-        lsmcIterator.begin();
-        while (lsmcIterator.hasNext()) {
-            map = (StarMapComponent) lsmcIterator.next();
+        createIterator(listStarMapComponent);
+        starMapComponentIterator.begin();
+        while (starMapComponentIterator.hasNext()) {
+            map = (StarMapComponent) starMapComponentIterator.next();
             map.encrypt(heroID, date, symbol);
         }
     }
@@ -108,10 +108,10 @@ public class StarAtlasComposite extends StarMapComponent {
     boolean isEncryptedByMe(int heroID) {
         StarMapComponent map;
 
-        createIterator(lmaps);
-        lsmcIterator.begin();
-        while (lsmcIterator.hasNext()) {
-            map = (StarMapComponent) lsmcIterator.next();
+        createIterator(listStarMapComponent);
+        starMapComponentIterator.begin();
+        while (starMapComponentIterator.hasNext()) {
+            map = (StarMapComponent) starMapComponentIterator.next();
             if (map.isEncryptedByMe(heroID) == true) {
                 return true;
             }
@@ -128,10 +128,10 @@ public class StarAtlasComposite extends StarMapComponent {
     public void decrypt(int heroID) {
         StarMapComponent map;
 
-        createIterator(lmaps);
-        lsmcIterator.begin();
-        while (lsmcIterator.hasNext()) {
-            map = (StarMapComponent) lsmcIterator.next();
+        createIterator(listStarMapComponent);
+        starMapComponentIterator.begin();
+        while (starMapComponentIterator.hasNext()) {
+            map = (StarMapComponent) starMapComponentIterator.next();
             map.decrypt(heroID);
         }
     }
@@ -144,10 +144,10 @@ public class StarAtlasComposite extends StarMapComponent {
         StarMapComponent map;
 
        if (encryptionStatus != true) {
-            createIterator(lmaps);
-            lsmcIterator.begin();
-            while (lsmcIterator.hasNext()) {
-                map = (StarMapComponent) lsmcIterator.next();
+            createIterator(listStarMapComponent);
+            starMapComponentIterator.begin();
+            while (starMapComponentIterator.hasNext()) {
+                map = (StarMapComponent) starMapComponentIterator.next();
                 map.display();
             }
         } else {
@@ -166,22 +166,21 @@ public class StarAtlasComposite extends StarMapComponent {
         String message = null;
         StarMapComponent map;
 
-        createIterator(lmaps);
-        lsmcIterator.begin();
-        map = (StarMapComponent) lsmcIterator.next();
+        createIterator(listStarMapComponent);
+        starMapComponentIterator.begin();
+        map = (StarMapComponent) starMapComponentIterator.next();
         message = map.encryptedDisplay();
-        while (lsmcIterator.hasNext()) {
-            map = (StarMapComponent) lsmcIterator.next();
+        while (starMapComponentIterator.hasNext()) {
+            map = (StarMapComponent) starMapComponentIterator.next();
             message += "\n";
             message += "\t";
             message += map.getBody();
            
         }
         message += "\n";
-        for (int i = 0; i < 40; ++i) {
+        for (int i = 0; i < 50; ++i) {
             message = message + map.getEncryptedSymbol();
         }
-
         return message;
     }
     
@@ -194,11 +193,10 @@ public class StarAtlasComposite extends StarMapComponent {
     @Override
     public void setEncryptionAlgorithm(EncryptionAlgorithm encrypt) {
         StarMapComponent map;
-
-        createIterator(lmaps);
-        lsmcIterator.begin();
-        while (lsmcIterator.hasNext()) {
-            map = (StarMapComponent) lsmcIterator.next();
+        createIterator(listStarMapComponent);
+        starMapComponentIterator.begin();
+        while (starMapComponentIterator.hasNext()) {
+            map = (StarMapComponent) starMapComponentIterator.next();
             map.setEncryptionAlgorithm(encrypt);
         }
     }
@@ -209,7 +207,7 @@ public class StarAtlasComposite extends StarMapComponent {
      * @param starMap
      */
     public void addStarMap(StarMapComponent starMap) {
-        lmaps.add(starMap);
+        listStarMapComponent.add(starMap);
         numberItems++;
     }
 }
