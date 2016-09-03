@@ -159,12 +159,16 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         CreateMessageUtility.createMsg("Vader Demo");
         CreateMessageUtility.createMsg("Vader flies to North");
         try {
-            vader.flyToLocation(gridOfButtons, new TFaceGrid(1, 2));
+            vader.flyToLocation(gridOfButtons, new TFaceGrid(1, 3));
         } catch (Exception ex) {
-            Logger.getLogger(Scenario3DisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Scenario2DisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         sleepForHalfSecond();
 
+        CreateMessageUtility.createMsg("Vader moves to North");
+        vader.makeMove(Direction.NORTH, gridOfButtons);
+        sleepForHalfSecond();
+        
         CreateMessageUtility.createMsg("Vader moves to East");
         vader.makeMove(Direction.EAST, gridOfButtons);
         sleepForHalfSecond();
@@ -173,7 +177,7 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         try {
             vader.flyToLocation(gridOfButtons, tMapbLoc);
         } catch (Exception ex) {
-            Logger.getLogger(Scenario3DisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Scenario2DisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         sleepForHalfSecond();
         
@@ -258,12 +262,7 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
             System.err.println("Error occurred : " + e.getMessage());
         }
         sleepForHalfSecond();
-        
-        
-
-    
-    
-    
+  
     }
 
 }

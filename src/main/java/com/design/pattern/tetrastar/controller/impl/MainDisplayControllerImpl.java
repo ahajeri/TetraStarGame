@@ -125,16 +125,6 @@ public class MainDisplayControllerImpl implements MainDisplayController {
                              // Start the simulation
                             gridDisplayScreen.startSimulation();
                             break;
-                        case SCENARIO3:
-                            // Start the simulation
-                            gridDisplayScreen.startSimulation();
-                            break;
-                        case SCENARIO4:
-                        	 // Start the simulation
-                            gridDisplayScreen.startSimulation();
-                            break;
-                        case SCENARIO5:
-                            break;
                     }
                 } else {
                     // TODO :  Do nothing or pring a warning message

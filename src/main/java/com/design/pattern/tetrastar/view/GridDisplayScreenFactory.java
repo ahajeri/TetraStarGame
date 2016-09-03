@@ -16,15 +16,6 @@ public class GridDisplayScreenFactory {
                 case SCENARIO2:
                     gridDisplayScreen = new Scenario2DisplayScreen();
                     break;
-                case SCENARIO3:
-                    gridDisplayScreen = new Scenario3DisplayScreen();
-                    break;
-                case SCENARIO4:
-                    gridDisplayScreen = new Scenario4DisplayScreen();
-                    break;
-                case SCENARIO5:
-                   // gridDisplayScreen = new Scenario5DisplayScreen();
-                    break;
             }
         } else {
             gridDisplayScreen = new DefaultGameDisplayScreen();
