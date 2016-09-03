@@ -56,7 +56,7 @@ public class TetraHero extends TetraPeople {
 
         try {
             if (heroType.equals(PeopleType.HERO1)) {
-                img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/thero.png"));
+                img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/hero1.png"));
             } else {
                 img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/hero2.jpg"));
             }
@@ -131,8 +131,8 @@ public class TetraHero extends TetraPeople {
                     }
 
                 } else {
-                    /*gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(null);
-                     gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setText("");*/
+                   // gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(null);
+                    // gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setText("");
                     image = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/Surface.jpg"));
                     gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(image));
                     gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(image));
@@ -282,7 +282,7 @@ public class TetraHero extends TetraPeople {
             try {
                 System.out.println("Hero wants to move to grid location " + newLocation.getRow() + "  " + newLocation.getColumn());
                 if (heroType.equals(PeopleType.HERO1)) {
-                    newImage = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/thero.png"));
+                    newImage = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/hero1.png"));
                 } else {
                     newImage = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/hero2.jpg"));
                 }
@@ -291,6 +291,7 @@ public class TetraHero extends TetraPeople {
                     enteredHomebase = false;
                 } else {
                     currentImage = null;
+                	 //currentImage = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/heroBase.jpg"));
                 }
 
             } catch (IOException e) {
@@ -337,7 +338,7 @@ public class TetraHero extends TetraPeople {
 
             if (characterObj.equals("empty") || characterObj.equals("HEROBASE") || characterObj.equals("MAPBASE") || characterObj.equals("VADERBASE")) {
 
-                if (heroType.equals("hero1")) {
+                if (heroType.equals(PeopleType.HERO1)) {
                     newSetLocation = (ArrayList) flyVehicle.flyToLocation(gridOfLocations, currentLocation, location, PeopleType.HERO1);
                 } else {
                     newSetLocation = (ArrayList) flyVehicle.flyToLocation(gridOfLocations, currentLocation, location, PeopleType.HERO2);
@@ -373,7 +374,7 @@ public class TetraHero extends TetraPeople {
                         flyImg = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/heroBase.jpg"));
                         gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(flyImg));
                         gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(flyImg));
-                    } else if (oldLocationText.equals("empty") || (oldLocationText.equals(""))) {
+                    } else if (oldLocationText.equals("empty")) {
                         image = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/Surface.jpg"));
                         gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(image));
                         gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(image));

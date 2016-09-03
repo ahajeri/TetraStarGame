@@ -36,7 +36,7 @@ public class THeroBase extends Location {
 
                 try {
                     if(PeopleType.HERO1.equals(thero.getHeroType())) {
-                        newImage = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/thero.png"));
+                        newImage = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/hero1.png"));
                     } else if(PeopleType.HERO2.equals(thero.getHeroType())) {
                         newImage = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/hero2.jpg"));
                     }                    

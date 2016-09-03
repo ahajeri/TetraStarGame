@@ -39,7 +39,7 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 		hero1BaseLoc = new THeroBase();
 		hero2BaseLoc = new THeroBase();
 		mapBaseLoc = new TMapBase();
-		mapBase1Loc = new TMapBase();
+		//mapBase1Loc = new TMapBase();
 
 		// create instances of heroes , vader and rovers.
 		hero1 = TetraPeopleFactory.createTetraPeople(RoverTypes.HERO, '*');
@@ -50,7 +50,7 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 
 		Image img = null;
 
-		tHero1Loc = new TFaceGrid(2, 2);
+		tHero1Loc = new TFaceGrid(2, 1);
 		tHero2Loc = new TFaceGrid(4, 2);
 		tRover1Loc = new TFaceGrid(5, 0);
 		tRover2Loc = new TFaceGrid(6, 4);
@@ -58,8 +58,8 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 		tMapLoc = new TFaceGrid(3, 3);
 		hero1bLoc = new TFaceGrid(0, 0);
 		hero2bLoc = new TFaceGrid(6, 6);
-		tMapbLoc = new TFaceGrid(2, 1);
-		tMapb1Loc = new TFaceGrid(4, 6);
+		tMapbLoc = new TFaceGrid(4, 6);
+		//tMapb1Loc = new TFaceGrid(4, 6);
 
 		// TODO : Star map (see prev code)
 		TetraPeopleObserverAndMediator tPeopleObserver = new TetraPeopleObserverAndMediator();
@@ -83,7 +83,7 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 		gridOfButtons[0][6].setDisabledIcon(new ImageIcon(img));
 
 		// set the fly location
-		flyLoc = new TFaceGrid(4, 6);
+		flyLoc = new TFaceGrid(6, 6);
 
 		this.setTetraPeopleToLocation();
 
@@ -94,7 +94,7 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 		tPeopleObserver.registerTHomeBase(vaderBaseLoc);
 		tPeopleObserver.registerTHomeBase(mapBaseLoc);
 
-		hero1.requestToFly();
+		hero2.requestToFly();
 	}
 
 	@Override
@@ -116,10 +116,16 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 			hero1.makeMove(Direction.SOUTH, gridOfButtons);
 			sleepForHalfSecond();
 
+			
+			CreateMessageUtility.createMsg("HERO1 Moves East");
+			hero1.makeMove(Direction.EAST, gridOfButtons);
+			sleepForHalfSecond();
+			
 			// Hero2 fly demo
 			CreateMessageUtility.createMsg("HERO2 Fly Demo");
 			CreateMessageUtility.createMsg("HERO2 Moves South");
-			hero2.makeInitialMove(Direction.SOUTH, gridOfButtons, tHero2Loc);
+			hero2.makeMove(Direction.SOUTH, gridOfButtons);
+			//hero2.makeInitialMove(Direction.SOUTH, gridOfButtons, tHero2Loc);
 			sleepForHalfSecond();
 
 			CreateMessageUtility
@@ -127,15 +133,25 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 			hero2.requestToFly();
 			sleepForHalfSecond();
 
-			CreateMessageUtility.createMsg("FLY TO hero2 Base Location");
+			/*CreateMessageUtility.createMsg("FLY TO hero2 Base Location");
 			hero2.flyToLocation(gridOfButtons, hero2bLoc);
-			sleepForHalfSecond();
+			sleepForHalfSecond();*/
+			
+			CreateMessageUtility.createMsg("FLY TO hero2 Base Location");
+	        try {
+	            hero2.flyToLocation(gridOfButtons, new TFaceGrid(1, 4));
+	        } catch (Exception e) {
+	            System.err.println("Error occurred : " + e.getMessage());
+	        }
+	        sleepForHalfSecond();
+	        
 
 			// Vader fly moves demo
 			CreateMessageUtility.createMsg("Vader moves Demo");
 			CreateMessageUtility.createMsg("Vader flies to a empty location");
 			vader.flyToLocation(gridOfButtons, new TFaceGrid(2, 5));
 			sleepForHalfSecond();
+			
 			hero1.setVaderExit(true);
 			CreateMessageUtility
 					.createMsg("Vader try to fly back to base location");

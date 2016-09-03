@@ -252,7 +252,7 @@ public class TetraVader extends TetraPeople {
                 gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(image));
                 gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setText("");
             } else if (oldLocationText.equals("HEROBASE")) {
-                flyImg = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/TetRoverHome.jpg"));
+                flyImg = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/heroBase.jpg"));
                 gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(flyImg));
                 gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(flyImg));
             }

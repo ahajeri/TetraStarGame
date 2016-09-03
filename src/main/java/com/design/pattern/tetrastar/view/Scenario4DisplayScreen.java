@@ -36,7 +36,7 @@ public class Scenario4DisplayScreen extends GridDisplayScreen {
         hero1BaseLoc = new THeroBase();
         hero2BaseLoc = new THeroBase();
         mapBaseLoc = new TMapBase();
-        mapBase1Loc = new TMapBase();
+        //mapBase1Loc = new TMapBase();
 
         // Create TetraPeople
         TetraPeopleFactory rover = new TetraPeopleFactory();
@@ -53,11 +53,11 @@ public class Scenario4DisplayScreen extends GridDisplayScreen {
         tRover2Loc = new TFaceGrid(6, 4);
         tVaderLoc = new TFaceGrid(3, 3);
         tMapLoc = new TFaceGrid(3, 3);
-        tMap1Loc = new TFaceGrid(3, 6);
+        //tMap1Loc = new TFaceGrid(3, 6);
         hero1bLoc = new TFaceGrid(0, 0);
         hero2bLoc = new TFaceGrid(6, 6);
         tMapbLoc = new TFaceGrid(2, 6);
-        tMapb1Loc = new TFaceGrid(3, 6);
+        //tMapb1Loc = new TFaceGrid(3, 6);
 
         this.setTetraPeopleToLocation();
 
@@ -93,12 +93,12 @@ public class Scenario4DisplayScreen extends GridDisplayScreen {
         vaderBaseLoc.setStarMapComponent(stAtlas1);
 
         /* StarMap - Case 2 */
-        StarMap stMap3 = new StarMap(idGenerator.nextId(), tMap1Loc, "Goto north,then east and there is plenty of gold");
+       /* StarMap stMap3 = new StarMap(idGenerator.nextId(), tMap1Loc, "Goto north,then east and there is plenty of gold");
         strategy = hero2.getEncryptionStrategy();
         encryptionAlgo = EncryptionAlgorithmFactory.getEncryptionAlgorithmForStrategy(strategy);
         stMap3.setEncryptionAlgorithm(encryptionAlgo);
         stMap3.encrypt(hero2.getId(), new Date(), ((TetraHero)hero2).getSymbol());
-        mapBase1Loc.setStarMapComponent(stMap3);
+        mapBase1Loc.setStarMapComponent(stMap3);*/
 
         /* Initializing Flier */
         try {
@@ -130,13 +130,6 @@ public class Scenario4DisplayScreen extends GridDisplayScreen {
             hero1.flyToLocation(gridOfButtons, tMapbLoc);
             sleepForHalfSecond();
 
-            CreateMessageUtility.createMsg("Request Flier: Hero2");
-            hero2.requestToFly();
-            sleepForHalfSecond();
-
-            CreateMessageUtility.createMsg("FLY TO MAPBASE LOCATION: Hero2");
-            hero2.flyToLocation(gridOfButtons, tMapbLoc);
-            sleepForHalfSecond();
         } catch (Exception ex) {
             Logger.getLogger(Scenario4DisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
         }

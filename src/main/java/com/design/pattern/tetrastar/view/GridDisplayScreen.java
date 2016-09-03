@@ -136,6 +136,6 @@ public abstract class GridDisplayScreen extends JPanel {
         // set the location of the mapbase.
         mapBaseLoc.setBaseGridLocation(gridOfButtons, tMapbLoc, "MAPBASE");
         // set the location of the mapbase.
-        mapBase1Loc.setBaseGridLocation(gridOfButtons, tMapb1Loc, "MAPBASE");
+        //mapBase1Loc.setBaseGridLocation(gridOfButtons, tMapb1Loc, "MAPBASE");
     }
 }

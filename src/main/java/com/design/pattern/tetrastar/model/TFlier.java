@@ -82,7 +82,7 @@ public class TFlier {
 
         // Set the image according to the type of character.
         if (peopleType.equals(PeopleType.HERO1)) {
-            img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/thero.png"));
+            img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/hero1.png"));
         } else if (peopleType.equals(PeopleType.HERO2)) {
             img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/hero2.jpg"));
         } else if (peopleType.equals(PeopleType.VADER)) {

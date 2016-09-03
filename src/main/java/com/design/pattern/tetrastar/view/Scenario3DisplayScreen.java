@@ -36,7 +36,7 @@ public class Scenario3DisplayScreen extends GridDisplayScreen {
         hero1BaseLoc = new THeroBase();
         hero2BaseLoc = new THeroBase();
         mapBaseLoc = new TMapBase();
-        mapBase1Loc = new TMapBase();
+        //mapBase1Loc = new TMapBase();
 
         // create instances of heroes , vader and rovers.        		
         hero1 = TetraPeopleFactory.createTetraPeople(RoverTypes.HERO, '*');
@@ -56,7 +56,7 @@ public class Scenario3DisplayScreen extends GridDisplayScreen {
         hero1bLoc = new TFaceGrid(0, 0);
         hero2bLoc = new TFaceGrid(6, 6);
         tMapbLoc = new TFaceGrid(2, 6);
-        tMapb1Loc = new TFaceGrid(4, 6);
+        //tMapb1Loc = new TFaceGrid(4, 6);
 
         this.setTetraPeopleToLocation();
 

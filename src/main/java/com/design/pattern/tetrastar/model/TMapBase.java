@@ -23,8 +23,9 @@ public class TMapBase extends Location {
             TetraHero thero = (TetraHero) people;
             if (thero.getOldstarMap() == null) {
                 boolean mapPresent = starMap.showSignal(this.getGridLocation());
+              
                 if (mapPresent) {
-                	
+                	System.out.println("StarAtlas is present at "+ "["+this.gridLocation.getRow()+"," + this.gridLocation.getColumn()+"]");
                     if (starMap.isEncrypted()) {
                         if (starMap.isEncryptedByMe(people.getId())) {
                             String s = "Hero enters MapBase and map is encrypted by him";

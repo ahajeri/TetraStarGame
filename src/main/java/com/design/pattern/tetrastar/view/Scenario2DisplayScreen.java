@@ -40,7 +40,7 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         hero1BaseLoc = new THeroBase();
         hero2BaseLoc = new THeroBase();
         mapBaseLoc = new TMapBase();
-        mapBase1Loc = new TMapBase();
+       // mapBase1Loc = new TMapBase();
 
         // Create TetraPeople
         TetraPeopleFactory rover = new TetraPeopleFactory();
@@ -57,11 +57,11 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         tRover2Loc = new TFaceGrid(6, 4);
         tVaderLoc = new TFaceGrid(3, 3);
         tMapLoc = new TFaceGrid(2, 6);
-        tMap1Loc = new TFaceGrid(3, 6);
+        //tMap1Loc = new TFaceGrid(3, 6);
         hero1bLoc = new TFaceGrid(0, 0);
         hero2bLoc = new TFaceGrid(6, 6);
         tMapbLoc = new TFaceGrid(2, 6);
-        tMapb1Loc = new TFaceGrid(3, 6);
+        //tMapb1Loc = new TFaceGrid(3, 6);
 
         this.setTetraPeopleToLocation();
 
@@ -77,7 +77,7 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         tMediator.registerTHomeBase(hero2BaseLoc);
         tMediator.registerTHomeBase(vaderBaseLoc);
         tMediator.registerTHomeBase(mapBaseLoc);
-        tMediator.registerTHomeBase(mapBase1Loc);
+        //tMediator.registerTHomeBase(mapBase1Loc);
 
         /* Initializing StarMaps */
         /* StarAtlas - Case 1 */
