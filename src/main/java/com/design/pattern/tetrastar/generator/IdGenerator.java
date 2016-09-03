@@ -1,8 +1,11 @@
 package com.design.pattern.tetrastar.generator;
+/**
+ * @author Akshata, Rachna and Shweta.
+ */
 
 /**
  *  Singleton class for generating all character's integer id numbers using nextId() function
- * @author Rachna Gajre <rgajre@scu.edu>
+ * 
  */
 public class IdGenerator {
 

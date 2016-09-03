@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
+/**
+ * @author Akshata, Rachna and Shweta.
+ */
 
 import java.util.Date;
 

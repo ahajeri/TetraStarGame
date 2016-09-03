@@ -1,4 +1,8 @@
 package com.design.pattern.tetrastar.enums;
+/**
+ * 
+ * @author Akshata, Rachna and Shweta.
+ */
 
 public enum ScenarioEnum {
 

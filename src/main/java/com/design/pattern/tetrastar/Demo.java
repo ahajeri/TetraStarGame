@@ -10,7 +10,7 @@ import com.design.pattern.tetrastar.controller.impl.MainDisplayControllerImpl;
 
 /**
  *
- * @author Rachna Gajre <rgajre@scu.edu>
+ * @author Akshata, Rachna and Shweta. 
  */
 public class Demo {
 

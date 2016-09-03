@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author Rachna Gajre <rgajre@scu.edu>
+ *  @author Akshata, Rachna and Shweta.
  */
 public class NullStarMap extends StarMapComponent {
 

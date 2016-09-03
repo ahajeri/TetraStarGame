@@ -1,4 +1,7 @@
 package com.design.pattern.tetrastar.model;
+/**
+ *   @author Akshata, Rachna and Shweta. 
+ */
 
 import com.design.pattern.tetrastar.enums.PeopleType;
 import com.design.pattern.tetrastar.util.CreateMessageUtility;

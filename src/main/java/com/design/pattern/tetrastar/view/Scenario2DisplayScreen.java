@@ -1,4 +1,7 @@
 package com.design.pattern.tetrastar.view;
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ */
 
 import java.awt.Image;
 import java.io.IOException;

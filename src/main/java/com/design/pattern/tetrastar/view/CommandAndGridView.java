@@ -1,4 +1,7 @@
 package com.design.pattern.tetrastar.view;
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ */
 
 import com.design.pattern.tetrastar.enums.ScenarioEnum;
 
@@ -7,7 +10,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.io.PrintStream;
 import java.util.Observable;
-
 
 public class CommandAndGridView extends AView {
 

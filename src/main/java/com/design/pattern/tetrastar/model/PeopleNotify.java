@@ -7,7 +7,7 @@ package com.design.pattern.tetrastar.model;
 
 /**
  *
- * @author Rachna Gajre <rgajre@scu.edu>
+ *  @author Akshata, Rachna and Shweta.
  */
 public class PeopleNotify {
     
