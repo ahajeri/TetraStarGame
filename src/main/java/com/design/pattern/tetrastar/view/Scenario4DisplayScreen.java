@@ -122,7 +122,6 @@ public class Scenario4DisplayScreen extends GridDisplayScreen {
             CreateMessageUtility.createMsg("Vader flies to a empty location");
             vader.flyToLocation(gridOfButtons, new TFaceGrid(0, 4));
             sleepForHalfSecond();
-
             hero1.setVaderExit(true);
 
             CreateMessageUtility.createMsg("Request Flier: Hero1");

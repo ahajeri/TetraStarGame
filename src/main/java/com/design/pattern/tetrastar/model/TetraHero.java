@@ -327,99 +327,13 @@ public class TetraHero extends TetraPeople {
 
     }
 
-    void fly(JButton[][] gridOfLocations, TFaceGrid location) throws IOException {
-        Image flyImg = null;
-        ArrayList newSetLocation;
-
-        System.out.println("Hero wants to fly to grid location " + location.getRow() + " " + location.getColumn());
-
-        if (flyVehicle == null) {
-            String s = " Hero cannot fly without the flier. Request flier";
-            CreateMessageUtility.createMsg(s);
-        } else {
-            String characterObj = checkLocation(gridOfLocations, location);
-
-            if (characterObj.equals("empty") || characterObj.equals("HEROBASE") || characterObj.equals("MAPBASE") || characterObj.equals("VADERBASE")) {
-
-                if (heroType.equals(PeopleType.HERO1)) {
-                    newSetLocation = (ArrayList) flyVehicle.flyToLocation(gridOfLocations, currentLocation, location, PeopleType.HERO1);
-                } else {
-                    newSetLocation = (ArrayList) flyVehicle.flyToLocation(gridOfLocations, currentLocation, location, PeopleType.HERO2);
-                }
-
-                TFaceGrid newCurrentLocation = (TFaceGrid) newSetLocation.get(1);
-
-                // Set the old and the new locations of hero
-                oldLocation = currentLocation;
-                currentLocation = location;
-
-                String oldLocationText = gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].getText();
-
-                // Check if the hero had entered the Mapbase anytime.
-                if (enteredMapbase) {
-                    if (oldLocationText.equals("MAPBASE")) {
-                        flyImg = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/MapBase.jpg"));
-                        gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(flyImg));
-                        gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(flyImg));
-                    } else if (oldLocationText.equals("VADERBASE")) {
-
-                        if (vaderExit) {
-                            flyImg = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/vaderHouse.jpg"));
-                        } else {
-                            flyImg = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/tVader.jpg"));
-                        }
-                        gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(flyImg));
-                        gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(flyImg));
-                    } /*else if (oldLocationText.equals("empty")) {
-
-                     gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(null);
-                     }*/ else if (oldLocationText.equals("HEROBASE")) {
-                        flyImg = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/heroBase.jpg"));
-                        gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(flyImg));
-                        gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(flyImg));
-                    } else if (oldLocationText.equals("empty")) {
-                        image = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/Surface.jpg"));
-                        gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(image));
-                        gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(image));
-                        gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setText("");
-                    }
-
-                } else {
-                    //gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(null);
-                    //gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setText("");
-                    image = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/Surface.jpg"));
-                    gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(image));
-                    gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(image));
-                    gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setText("");
-                }
-
-                if (!characterObj.equals("empty")) {
-                    PeopleNotify notification = new PeopleNotify();
-                    notification.people = this;
-                    notification.baseLocation = location;
-
-                    if (characterObj.equals("HEROBASE")) {
-                        notification.notificationType = NotificationType.HEROBASE;
-
-                    } else if (characterObj.equals("VADERBASE")) {
-                        notification.notificationType = NotificationType.VADERBASE;
-                    } else {
-                        notification.notificationType = NotificationType.MAPBASE;
-                        enteredMapbase = true;
-                    }
-
-                    peopleObservable.setChanged();
-                    peopleObservable.notifyObservers(notification);
-                }
-            }
-        }
-    }
+   
 
     public void flyWithMap(StarMapComponent originalMap, StarMapComponent newMap, JButton[][] gridOfLocations, TFaceGrid currentLocation, TFaceGrid newLocation) {
         this.oldstarMap = originalMap;
         this.NewstarMap = newMap;
         try {
-            this.fly(gridOfLocations, newLocation);
+            this.flyToLocation(gridOfLocations, newLocation);
         } catch (Exception e) {
             System.err.println("Error occurred " + e.getMessage());
         }

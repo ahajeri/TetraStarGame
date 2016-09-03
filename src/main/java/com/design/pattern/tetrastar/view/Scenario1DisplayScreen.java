@@ -54,17 +54,15 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 		Image img = null;
 
 		tHero1Loc = new TFaceGrid(2, 1);
-		tHero2Loc = new TFaceGrid(4, 2);
-		tRover1Loc = new TFaceGrid(5, 0);
-		tRover2Loc = new TFaceGrid(6, 4);
+		tHero2Loc = new TFaceGrid(5, 4);
+		tRover1Loc = new TFaceGrid(0, 2);
+		tRover2Loc = new TFaceGrid(6, 2);
 		tVaderLoc = new TFaceGrid(3, 3);
 		tMapLoc = new TFaceGrid(3, 3);
 		hero1bLoc = new TFaceGrid(0, 0);
 		hero2bLoc = new TFaceGrid(6, 6);
 		tMapbLoc = new TFaceGrid(4, 6);
-		//tMapb1Loc = new TFaceGrid(4, 6);
-
-		// TODO : Star map (see prev code)
+		
 		TetraPeopleObserverAndMediator tPeopleObserver = new TetraPeopleObserverAndMediator();
 
 		// register the people to the mediator.
@@ -128,19 +126,15 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 			CreateMessageUtility.createMsg("HERO2 Fly Demo");
 			CreateMessageUtility.createMsg("HERO2 Moves South");
 			hero2.makeMove(Direction.SOUTH, gridOfButtons);
-			//hero2.makeInitialMove(Direction.SOUTH, gridOfButtons, tHero2Loc);
+			
 			sleepForHalfSecond();
 
 			CreateMessageUtility
 					.createMsg("Hero2 Request to fly to different location.");
 			hero2.requestToFly();
 			sleepForHalfSecond();
-
-			/*CreateMessageUtility.createMsg("FLY TO hero2 Base Location");
-			hero2.flyToLocation(gridOfButtons, hero2bLoc);
-			sleepForHalfSecond();*/
 			
-			CreateMessageUtility.createMsg("FLY TO hero2 Base Location");
+			CreateMessageUtility.createMsg("hero2 fly TO  empty Location");
 	        try {
 	            hero2.flyToLocation(gridOfButtons, new TFaceGrid(1, 4));
 	        } catch (Exception e) {

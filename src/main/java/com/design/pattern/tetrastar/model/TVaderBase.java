@@ -7,6 +7,7 @@ import com.design.pattern.tetrastar.encryption.EncryptionAlgorithm;
 import com.design.pattern.tetrastar.encryption.EncryptionAlgorithmFactory;
 import com.design.pattern.tetrastar.enums.EncryptionStrategy;
 import com.design.pattern.tetrastar.util.CreateMessageUtility;
+
 import java.util.Date;
 
 /**
@@ -26,7 +27,16 @@ public class TVaderBase extends Location {
         }
         return INSTANCE;
     }
-
+    public void setLocationId(int id)
+	{
+		this.locationId = id;
+	}
+    
+  
+    int getLocation()
+	{
+		return locationId;
+	}
     @Override
     public String getImageName() {
         return "vaderHouse.jpg";

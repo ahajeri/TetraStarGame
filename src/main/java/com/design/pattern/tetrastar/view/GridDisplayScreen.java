@@ -33,7 +33,7 @@ public abstract class GridDisplayScreen extends JPanel {
     // Locations for all characters 
     protected TFaceGrid tHero1Loc, tHero2Loc;
     protected TFaceGrid tRover1Loc, tRover2Loc, tMap1Loc;
-    protected TFaceGrid tVaderLoc, tMapLoc, tMapbLoc, tMapb1Loc;
+    protected TFaceGrid tVaderLoc, tMapLoc, tMapbLoc;
     protected TFaceGrid flyLoc;
     protected TFaceGrid hero1bLoc, hero2bLoc;
 

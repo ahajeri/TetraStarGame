@@ -52,7 +52,7 @@ public class TMapBase extends Location {
                     vaderBaselocation = new TFaceGrid(3, 3);
                     thero.setMapToVader(this.getGridLocation());
 
-                    thero.fly(gridOfLocations, vaderBaselocation);
+                    thero.flyToLocation(gridOfLocations, vaderBaselocation);
                 }
             } else {
                 String message = "Hero enters MapBase with encrypted map";
@@ -61,9 +61,9 @@ public class TMapBase extends Location {
                 starMap.setLocation(this.getGridLocation());
 
                 if (thero.getId() == 1) {
-                    thero.fly(gridOfLocations, new TFaceGrid(0, 0));
+                    thero.flyToLocation(gridOfLocations, new TFaceGrid(0, 0));
                 } else {
-                    thero.fly(gridOfLocations, new TFaceGrid(6, 6));
+                    thero.flyToLocation(gridOfLocations, new TFaceGrid(6, 6));
                 }
             }
         } else if (people instanceof TetraRover) {

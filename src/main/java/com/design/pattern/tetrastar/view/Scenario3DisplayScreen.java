@@ -112,26 +112,5 @@ public class Scenario3DisplayScreen extends GridDisplayScreen {
     }
 
     @Override
-    public void startSimulation() {
-        CreateMessageUtility.createMsg("Vader flies to North");
-        try {
-            vader.flyToLocation(gridOfButtons, new TFaceGrid(1, 2));
-        } catch (Exception ex) {
-            Logger.getLogger(Scenario3DisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        sleepForHalfSecond();
-
-        CreateMessageUtility.createMsg("Vader moves to East");
-        vader.makeMove(Direction.EAST, gridOfButtons);
-        sleepForHalfSecond();
-
-        CreateMessageUtility.createMsg("vader fly");
-        try {
-            vader.flyToLocation(gridOfButtons, tMapbLoc);
-        } catch (Exception ex) {
-            Logger.getLogger(Scenario3DisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        sleepForHalfSecond();
-        
-    }
+    public void startSimulation() {}
 }
