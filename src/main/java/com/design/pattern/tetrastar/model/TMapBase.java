@@ -88,8 +88,8 @@ public class TMapBase extends Location {
                 newLoc = tVader.extractLastLocationFromPath();
             }
             // Map set to nullObject
-            this.starMap = new NullStarMap();
-        }
+            this.starMap = new NullStarMap(); 
+        } 
     }
 
 }
