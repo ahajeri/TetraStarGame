@@ -156,7 +156,7 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         }
         sleepForHalfSecond();
         
-        CreateMessageUtility.createMsg("Vader Demo");
+        CreateMessageUtility.createMsg("Map Stealing Demo");
         CreateMessageUtility.createMsg("Vader flies to North");
         try {
             vader.flyToLocation(gridOfButtons, new TFaceGrid(1, 3));
@@ -236,7 +236,7 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
 
       
         
-        CreateMessageUtility.createMsg("Hero Demo");
+        CreateMessageUtility.createMsg("Hero Finds map and Places into Map Base");
         
         CreateMessageUtility.createMsg("Vader flies to a empty location");
         try {
