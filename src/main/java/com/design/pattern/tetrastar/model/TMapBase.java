@@ -28,10 +28,17 @@ public class TMapBase extends Location {
                 boolean mapPresent = starMap.showSignal(this.getGridLocation());
               
                 if (mapPresent) {
-                	System.out.println("StarAtlas is present at "+ "["+this.gridLocation.getRow()+"," + this.gridLocation.getColumn()+"]");
-                    if (starMap.isEncrypted()) {
+                	System.out.println("---StarAtlas is present at "+ "["+this.gridLocation.getRow()+"," + this.gridLocation.getColumn()+"]---\n");
+                   
+                	if (starMap.isEncrypted()) {
                         if (starMap.isEncryptedByMe(people.getId())) {
                             String s = "Hero enters MapBase and map is encrypted by him";
+                            System.out.println("Hero enters MapBase and map is encrypted by him");
+                            int restoreCount = starMap.getRestorationCounter();
+                            starMap.setRestorationCounter(restoreCount++);
+                            System.out.println("Restoration counter is incremented");
+                            System.out.println("Old Restoration counter:" + restoreCount);
+                            System.out.println("New Restoration counter:" + starMap.getRestorationCounter());
                             CreateMessageUtility.createMsg(s);
                             starMap.decrypt(people.getId());
                             starMap.display();
@@ -55,10 +62,27 @@ public class TMapBase extends Location {
                     thero.flyToLocation(gridOfLocations, vaderBaselocation);
                 }
             } else {
+            	
                 String message = "Hero enters MapBase with encrypted map";
                 CreateMessageUtility.createMsg(message);
+                
+                starMap.setEncryptionStatus(true);
+            	
+                boolean enc = starMap.isEncrypted();
+            	if(enc == true){
+            		int restoreCount = starMap.getRestorationCounter();
+            		System.out.println("\n StarAtlas was already encrypted before VADER stoles\n");
+            		System.out.println("Therefore, HERO1 increments restoration counter \n");
+                    System.out.println("Old Restoration counter:" + restoreCount);
+                    restoreCount = restoreCount + 1;
+                    starMap.setRestorationCounter(restoreCount);
+                    System.out.println("New Restoration counter:" + starMap.getRestorationCounter() + " \n");
+            	}
+            	
                 starMap = thero.getOldstarMap();
                 starMap.setLocation(this.getGridLocation());
+                
+                
 
                 if (thero.getId() == 1) {
                     thero.flyToLocation(gridOfLocations, new TFaceGrid(0, 0));

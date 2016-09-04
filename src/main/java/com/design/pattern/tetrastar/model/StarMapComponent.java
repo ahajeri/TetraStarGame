@@ -28,7 +28,7 @@ public abstract class StarMapComponent implements Cloneable {
      * Number of maps in atlas.
      */
     int numberItems;
-
+    private int restorationCounter = 0;
     /**
      * Grid location of StarMap.
      */
@@ -141,5 +141,13 @@ public abstract class StarMapComponent implements Cloneable {
      * @param encrypt
      */
     abstract void setEncryptionAlgorithm(EncryptionAlgorithm encrypt);
+
+	public int getRestorationCounter() {
+		return restorationCounter;
+	}
+
+	public void setRestorationCounter(int restorationCounter) {
+		this.restorationCounter = restorationCounter;
+	}
 
 }

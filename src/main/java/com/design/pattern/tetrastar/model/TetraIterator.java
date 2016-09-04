@@ -12,7 +12,7 @@ import java.util.List;
  *
  *  @author Akshata, Rachna and Shweta.
  */
-public abstract class TIterator implements Iterator<Object> {
+public abstract class TetraIterator implements Iterator<Object> {
 	
 	/**
 	 * Tracks the current Position.
@@ -68,7 +68,7 @@ public abstract class TIterator implements Iterator<Object> {
  * StarMapComponentIterator provides traversal for StarMapComponent Aggregate.
  * This class acts as Concrete Iterator.
  */
-class StarMapComponentIterator extends TIterator {
+class StarMapComponentIterator extends TetraIterator {
 	
 	/**
 	 * Aggregate List.
@@ -114,7 +114,7 @@ class StarMapComponentIterator extends TIterator {
  * EncryptingHeroIterator provides traversal for EncryptingHero Aggregate.
  * This class acts as Concrete Iterator.
  */
-class EncryptingHeroIterator extends TIterator {
+class EncryptingHeroIterator extends TetraIterator {
 	
 	/**
 	 * Aggregate List.

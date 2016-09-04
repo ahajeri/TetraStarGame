@@ -23,7 +23,7 @@ public class StarMap extends StarMapComponent {
     String body;
     EncryptionAlgorithm encryptionAlgo;
     List<EncryptingHero> encryptedHeroes = new ArrayList<EncryptingHero>();
-    EncryptingHeroIterator lehIterator;
+    EncryptingHeroIterator encryptingHeroIterator;
 
     /**
      * Initializing StarMap.
@@ -45,7 +45,7 @@ public class StarMap extends StarMapComponent {
      * @param leh
      */
     private void createIterator(List<EncryptingHero> leh) {
-        lehIterator = new EncryptingHeroIterator(leh);
+        encryptingHeroIterator = new EncryptingHeroIterator(leh);
     }
 
     /**
@@ -73,9 +73,9 @@ public class StarMap extends StarMapComponent {
 
         if (encryptionStatus == true) {
             createIterator(encryptedHeroes);
-            lehIterator.begin();
-            while (lehIterator.hasNext()) {
-                previousHero = (EncryptingHero) lehIterator.next();
+            encryptingHeroIterator.begin();
+            while (encryptingHeroIterator.hasNext()) {
+                previousHero = (EncryptingHero) encryptingHeroIterator.next();
                 if (previousHero.getHeroID() == heroID) {
                     alreadyEncrypted = true;
                     previousHero.updateCounter();
@@ -108,9 +108,9 @@ public class StarMap extends StarMapComponent {
         EncryptingHero previousHero;
 
         createIterator(encryptedHeroes);
-        lehIterator.begin();
-        while (lehIterator.hasNext()) {
-            previousHero = (EncryptingHero) lehIterator.next();
+        encryptingHeroIterator.begin();
+        while (encryptingHeroIterator.hasNext()) {
+            previousHero = (EncryptingHero) encryptingHeroIterator.next();
             if (previousHero.getHeroID() == heroID) {
                 body = encryptionAlgo.decrypt(body);
                 return;
@@ -134,9 +134,9 @@ public class StarMap extends StarMapComponent {
         EncryptingHero previousHero;
 
         createIterator(encryptedHeroes);
-        lehIterator.begin();
-        while (lehIterator.hasNext()) {
-            previousHero = (EncryptingHero) lehIterator.next();
+        encryptingHeroIterator.begin();
+        while (encryptingHeroIterator.hasNext()) {
+            previousHero = (EncryptingHero) encryptingHeroIterator.next();
             if (previousHero.getHeroID() == heroID) {
                 return true;
             }
@@ -174,8 +174,8 @@ public class StarMap extends StarMapComponent {
         EncryptingHero initialHero;
 
         createIterator(encryptedHeroes);
-        lehIterator.begin();
-        initialHero = (EncryptingHero) lehIterator.next();
+        encryptingHeroIterator.begin();
+        initialHero = (EncryptingHero) encryptingHeroIterator.next();
 
         return initialHero.getSymbol();
     }
@@ -190,15 +190,15 @@ public class StarMap extends StarMapComponent {
 
         String message = "";
         createIterator(encryptedHeroes);
-        lehIterator.begin();
-        EncryptingHero initialHero = (EncryptingHero) lehIterator.next();
+        encryptingHeroIterator.begin();
+        EncryptingHero initialHero = (EncryptingHero) encryptingHeroIterator.next();
         for (int i = 0; i < 40; ++i) {
             message = message + initialHero.getSymbol();
         }
 
         message = message + "\n\t\t HeroID: " + initialHero.getHeroID() + " Date: " + initialHero.getDate() + "\n";
-        while (lehIterator.hasNext()) {
-            EncryptingHero newHero = (EncryptingHero) lehIterator.next();
+        while (encryptingHeroIterator.hasNext()) {
+            EncryptingHero newHero = (EncryptingHero) encryptingHeroIterator.next();
             message = message + "\n\t\t HeroID: " + newHero.getHeroID() + "\n";
         }
         message = message + "\t\t" + body + "\n";
@@ -209,18 +209,7 @@ public class StarMap extends StarMapComponent {
     String nonEncryptedDisplay() {
 
         String message = "";
-       // createIterator(encryptedHeroes);
-        //lehIterator.begin();
-        //EncryptingHero initialHero = (EncryptingHero) lehIterator.next();
-        /*for (int i = 0; i < 40; ++i) {
-            message = message + "*";//initialHero.getSymbol();
-        }*/
-
         message = message + "\n\t\t MapID: " + starComponentID + "\n";
-        /*while (lehIterator.hasNext()) {
-            EncryptingHero newHero = (EncryptingHero) lehIterator.next();
-            message = message + "\n\t\tID: " + newHero.getHeroID() + "\n";
-        }*/
         message = message + "\t\t" + body + "\n";
 
         return message;
