@@ -97,8 +97,8 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         EncryptionStrategy strategy = hero1.getEncryptionStrategy();
 
         /* Using factory method pattern to get Encryption algorithm for an encryption strategy */
-        
         encryptionAlgo = EncryptionAlgorithmFactory.getEncryptionAlgorithmForStrategy(strategy);
+        //System.out.println(encryptionAlgo);
         starAtlas.addStarMap(starMap1);
         starAtlas.addStarMap(starMap2);
         starAtlas.setEncryptionAlgorithm(encryptionAlgo);
@@ -234,7 +234,6 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         EncryptionStrategy strategy = hero1.getEncryptionStrategy();
 
        //  Using factory method pattern to get Encryption algorithm for an encryption strategy 
-        EncryptionAlgorithm encryptionAlgo;
         encryptionAlgo = EncryptionAlgorithmFactory.getEncryptionAlgorithmForStrategy(strategy);
         stAtlas1.addStarMap(stMap1);
         stAtlas1.addStarMap(stMap2);

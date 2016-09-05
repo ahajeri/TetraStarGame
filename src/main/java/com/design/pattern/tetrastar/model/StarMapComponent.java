@@ -77,6 +77,10 @@ public abstract class StarMapComponent implements Cloneable {
 
     abstract void setEncryptionAlgorithm(EncryptionAlgorithm encrypt);
 
+    abstract void addStarMap(StarMapComponent starMap);
+    
+    abstract void removeStarMap(StarMapComponent starMap);
+    
 	public int getRestorationCounter() {
 		return restorationCounter;
 	}

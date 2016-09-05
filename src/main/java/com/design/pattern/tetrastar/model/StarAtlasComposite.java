@@ -201,13 +201,15 @@ public class StarAtlasComposite extends StarMapComponent {
         }
     }
 
-    /**
-     * Add new StarMap in StarAtlas.
-     *
-     * @param starMap
-     */
+    @Override
     public void addStarMap(StarMapComponent starMap) {
         listStarMapComponent.add(starMap);
         numberItems++;
     }
+
+	@Override
+	void removeStarMap(StarMapComponent starMap) {
+		// TODO Auto-generated method stub
+		
+	}
 }

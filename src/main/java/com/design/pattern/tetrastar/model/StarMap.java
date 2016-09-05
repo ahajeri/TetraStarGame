@@ -213,4 +213,16 @@ public class StarMap extends StarMapComponent {
         this.encryptionAlgo = encryptAlgo;
     }
 
+	@Override
+	void addStarMap(StarMapComponent starMap) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void removeStarMap(StarMapComponent starMap) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
