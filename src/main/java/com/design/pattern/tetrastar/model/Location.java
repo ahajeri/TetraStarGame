@@ -13,6 +13,8 @@ import javax.swing.JButton;
  */
 public abstract class Location {
 
+    protected ProcessMapVisitor processMapVisitor = new ProcessMapVisitor(this);
+        
     protected int locationId;
 
     protected TFaceGrid gridLocation;
@@ -24,7 +26,13 @@ public abstract class Location {
 
     public abstract String getImageName();
 
-    public abstract void processMap(TetraPeople people) throws Exception;
+    public abstract void processMap(TetraPeople people);
+    
+    public abstract void processMapByHero(TetraHero tHero);
+    
+    public abstract void processMapByRover(TetraRover tRover);
+    
+    public abstract void processMapByVader(TetraVader tVader);
 
     // Visitor pattern
     public abstract void accept(LocationVisitor locationVisitor);

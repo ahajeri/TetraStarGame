@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
- *   @author Akshata, Rachna and Shweta. 
+ * @author Akshata, Rachna and Shweta.
  */
 public class TetraRover extends TetraPeople {
 
@@ -51,6 +51,7 @@ public class TetraRover extends TetraPeople {
         int newRow = currentLocation.getRow() - 1;
         if (newRow < TetraConstants.minRows) {
             String s = "Cannot move North. Out of the Grid";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         } else {
             newLocation = new TFaceGrid(newRow, currentLocation.getColumn());
@@ -62,6 +63,7 @@ public class TetraRover extends TetraPeople {
         int newRow = currentLocation.getRow() + 1;
         if (newRow > TetraConstants.maxRows) {
             String s = "Cannot move South. Out of the Grid";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         } else {
             newLocation = new TFaceGrid(newRow, currentLocation.getColumn());
@@ -73,6 +75,7 @@ public class TetraRover extends TetraPeople {
         int newCol = currentLocation.getColumn() + 1;
         if (newCol > TetraConstants.maxColumns) {
             String s = "Cannot move East. Out of the Grid";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         } else {
             newLocation = new TFaceGrid(currentLocation.getRow(), newCol);
@@ -84,6 +87,7 @@ public class TetraRover extends TetraPeople {
         int newCol = currentLocation.getColumn() - 1;
         if (newCol < TetraConstants.minColumns) {
             String s = "Cannot move West. Out of the Grid";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         } else {
             newLocation = new TFaceGrid(currentLocation.getRow(), newCol);
@@ -113,9 +117,8 @@ public class TetraRover extends TetraPeople {
         int row = currentLocation.getRow();
         int col = currentLocation.getColumn();
 
-        boolean empty = false;
-
         if (gridOfLocations[row][col].getText().equals("")) {
+            System.out.println("Rover wants to move to grid location " + newLocation.getRow() + "  " + newLocation.getColumn());                
             try {
                 img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/tRover.jpg"));
             } catch (IOException e) {
@@ -126,18 +129,20 @@ public class TetraRover extends TetraPeople {
         }
 
         if (gridOfLocations[row][col].getText().equals("HEROBASE")) {
-            String s = "Cannot move to the herobase";
+            String s = "Rover Cannot move to the herobase";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         }
         if (gridOfLocations[row][col].getText().equals("VADERBASE")) {
-            String s = "Cannot move to vaderbase";
+            String s = "Rover Cannot move to vaderbase";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         }
         if (gridOfLocations[row][col].getText().equals("HERO")) {
-            String s = "Cannot enter location. Hero Present";
+            String s = "Rover Cannot enter location. Hero Present";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         }
-
     }
 
     @Override
@@ -158,18 +163,25 @@ public class TetraRover extends TetraPeople {
     @Override
     public void flyToLocation(JButton[][] gridOfLocations, TFaceGrid locationToFlyTo) throws Exception {
         String s = "Rovers cannot fly.";
+        System.out.println(s);
         CreateMessageUtility.createMsg(s);
     }
 
     @Override
     public void requestToFly() {
         String s = "Rovers cannot request for a fly vehicle.";
+        System.out.println(s);
         CreateMessageUtility.createMsg(s);
     }
 
     @Override
     public EncryptionStrategy getEncryptionStrategy() {
         return EncryptionStrategy.NULL;
+    }
+
+    @Override
+    public void accept(MapVisitor mapVisitor) {
+        mapVisitor.visit(this);
     }
 
 }
