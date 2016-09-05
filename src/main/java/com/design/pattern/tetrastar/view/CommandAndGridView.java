@@ -13,7 +13,7 @@ import java.util.Observable;
 
 public class CommandAndGridView extends AView {
 
-    private static final int noOfScenarios = 6;
+    private static final int noOfScenarios = 3;
 
     // Main side panel that contains dropdown and buttons
     private JPanel sidePanel;
