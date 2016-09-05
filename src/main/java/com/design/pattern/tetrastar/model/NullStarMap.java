@@ -84,4 +84,16 @@ public class NullStarMap extends StarMapComponent {
     char getEncryptedSymbol() {
         return '\0';
     }
+
+	@Override
+	void addStarMap(StarMapComponent starMap) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void removeStarMap(StarMapComponent starMap) {
+		// TODO Auto-generated method stub
+		
+	}
 }
