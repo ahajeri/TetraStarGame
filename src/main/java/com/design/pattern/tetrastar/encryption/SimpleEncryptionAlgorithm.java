@@ -13,7 +13,6 @@ public class SimpleEncryptionAlgorithm implements EncryptionAlgorithm {
      */
     @Override
     public String encrypt(String dataToEncrypt) {
-        System.out.println("Encrypting data");
         if(dataToEncrypt == null || dataToEncrypt.length() <= 1) {
             return dataToEncrypt;
         }
@@ -28,7 +27,6 @@ public class SimpleEncryptionAlgorithm implements EncryptionAlgorithm {
      */
     @Override
     public String decrypt(String dataToDecrypt) {
-        System.out.println("Decrypting data");
         return encrypt(dataToDecrypt);
     }
 }

@@ -14,13 +14,11 @@ public class NullEncryptionAlgorithm implements EncryptionAlgorithm {
      */
     @Override
     public String encrypt(String dataToEncrypt) {
-        System.out.println("Encrypting data");
         return dataToEncrypt;
     }
 
     @Override
     public String decrypt(String dataToDecrypt) {
-        System.out.println("Decrypting data");
         return dataToDecrypt;
     }
 
