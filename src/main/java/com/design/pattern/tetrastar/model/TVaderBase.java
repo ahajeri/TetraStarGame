@@ -1,8 +1,4 @@
 package com.design.pattern.tetrastar.model;
-/**
- *   @author Akshata, Rachna and Shweta. 
- */
-
 import com.design.pattern.tetrastar.encryption.EncryptionAlgorithm;
 import com.design.pattern.tetrastar.encryption.EncryptionAlgorithmFactory;
 import com.design.pattern.tetrastar.enums.EncryptionStrategy;
@@ -10,6 +6,10 @@ import com.design.pattern.tetrastar.util.CreateMessageUtility;
 
 import java.util.Date;
 
+
+/**
+ *   @author Akshata, Rachna and Shweta. 
+ */
 /**
  * Singleton pattern as there can be only one instance of VaderBase
  */
@@ -81,4 +81,9 @@ public class TVaderBase extends Location {
         }
     }
 
+    @Override
+    public void accept(LocationVisitor locationVisitor) {
+        locationVisitor.visit(this);
+    }
+    
 }

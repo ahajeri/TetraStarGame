@@ -2,8 +2,8 @@ package com.design.pattern.tetrastar.enums;
 /**
  * 
  * @author Akshata, Rachna and Shweta.
+ *   Enum to represent characters mandatory according to game rules(2 heroes, 2 rovers and one vader)
  */
-
 public enum PeopleType {
 
     HERO1("hero1"),

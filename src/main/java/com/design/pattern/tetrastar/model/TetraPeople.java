@@ -1,15 +1,15 @@
 package com.design.pattern.tetrastar.model;
-/**
- *   @author Akshata, Rachna and Shweta. 
- */
-
 import com.design.pattern.tetrastar.enums.Direction;
 import com.design.pattern.tetrastar.enums.EncryptionStrategy;
 import com.design.pattern.tetrastar.enums.PeopleType;
 import java.util.Observer;
 
 import javax.swing.*;
- 
+
+/**
+ *   @author Akshata, Rachna and Shweta. 
+ *   Abstract class for Tetra People
+ */
 public abstract class TetraPeople {
 
     protected int id;

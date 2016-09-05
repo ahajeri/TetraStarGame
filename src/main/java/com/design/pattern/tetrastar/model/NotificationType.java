@@ -8,6 +8,8 @@ package com.design.pattern.tetrastar.model;
 /**
  * 
  *  @author Akshata, Rachna and Shweta.
+ *   
+ * Notification Type enum for sending notification for observer pattern
  */
 public enum NotificationType {
     

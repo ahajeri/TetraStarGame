@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.view;
-/**
- *   @author Akshata, Rachna and  Shweta. 
- */
-
 import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
+
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ */
 public class AView extends JPanel implements Observer {
 
     @Override

@@ -1,14 +1,16 @@
 package com.design.pattern.tetrastar.model;
+
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 /**
  * @author Akshata, Rachna and Shweta.
+ * Abstract class to represent the location of a base (mapbase, vaderbase or
+ * herobase)
  */
-
-import com.design.pattern.tetrastar.enums.PeopleType;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
-
 public abstract class Location {
 
     protected int locationId;
@@ -23,15 +25,17 @@ public abstract class Location {
     public abstract String getImageName();
 
     public abstract void processMap(TetraPeople people) throws Exception;
-    
+
+    // Visitor pattern
+    public abstract void accept(LocationVisitor locationVisitor);
+
     public TFaceGrid getGridLocation() {
         return this.gridLocation;
     }
-    
-    public void setStarMapComponent(StarMapComponent starMap) {
-		this.starMap = starMap;
-	}
 
+    public void setStarMapComponent(StarMapComponent starMap) {
+        this.starMap = starMap;
+    }
 
     public void setBaseGridLocation(JButton[][] gridOfLocations, TFaceGrid location, String baseText) {
         this.gridLocation = location;
@@ -43,7 +47,7 @@ public abstract class Location {
             String imgName = this.getImageName();
             imageIcon = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/" + imgName));
         } catch (IOException e) {
-            System.out.println("Can not read image because of exception : " + e.getMessage());
+            System.err.println("Can not read image because of exception : " + e.getMessage());
             System.exit(1);
         }
 

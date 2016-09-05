@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
-/**
- *   @author Akshata, Rachna and  Shweta. 
- */
-
 import com.design.pattern.tetrastar.enums.RoverTypes;
 
-
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ *   Factory Design Pattern to create TetraPeople of different types
+ */
 public class TetraPeopleFactory {
     
     public static TetraPeople createTetraPeople(RoverTypes roverType, char symbol) {

@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
+import java.util.Date;
+
 /**
  * @author Akshata, Rachna and Shweta.
  */
-
-import java.util.Date;
-
 public class EncryptingHero {
 
     private int heroID;

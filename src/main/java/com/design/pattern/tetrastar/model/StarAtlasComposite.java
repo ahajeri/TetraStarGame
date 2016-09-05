@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
-/**
- *  @author Akshata, Rachna and Shweta.
- */
 
 import com.design.pattern.tetrastar.encryption.EncryptionAlgorithm;
 import com.design.pattern.tetrastar.util.CreateMessageUtility;
@@ -14,6 +11,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ *  @author Akshata, Rachna and Shweta.
+ *   Composite Design Pattern
+ */
 public class StarAtlasComposite extends StarMapComponent {
 
     /**

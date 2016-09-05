@@ -1,8 +1,4 @@
 package com.design.pattern.tetrastar.view;
-/**
- *   @author Akshata, Rachna and  Shweta. 
- */
-
 import com.design.pattern.tetrastar.enums.ScenarioEnum;
 
 import javax.swing.*;
@@ -11,6 +7,10 @@ import java.awt.*;
 import java.io.PrintStream;
 import java.util.Observable;
 
+
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ */
 public class CommandAndGridView extends AView {
 
     private static final int noOfScenarios = 3;
@@ -23,9 +23,10 @@ public class CommandAndGridView extends AView {
     private JButton startSimulation, resetScreen, setScreen;
     private JLabel scenarioDescription;
 
+    // Enum to store current selected scenario
     private ScenarioEnum currentScenario;
 
-    // Grid screen for grid view that contains 7x7 grid
+    // Grid screen for grid view that contains m * n grid
     private GridDisplayScreen gridDisplayScreen;
     
     // Console panel for showing logger for each step
@@ -33,10 +34,11 @@ public class CommandAndGridView extends AView {
 
     public CommandAndGridView() {
 
+        // Initialize Consoler Logger panel
         initializeConsolePanel();
 
         /**
-         *   Create Side Panel for Commands
+         *   Create Side Panel for Dropdown and Buttons to control scenario
          */
         // Set the subpanel details
         this.sidePanel = new JPanel();
@@ -59,6 +61,7 @@ public class CommandAndGridView extends AView {
         scenarioMessage.setForeground(Color.WHITE);
         this.sidePanel.add(scenarioMessage);
 
+        // Set string values in Scenario dropdown
         String[] scenarios =  new String[noOfScenarios];
         for(int i = 0 ; i < noOfScenarios ; i++ ) {
             if(i == 0) continue;
@@ -105,7 +108,7 @@ public class CommandAndGridView extends AView {
     }
     
     private void initializeConsolePanel() {
-                this.consolePanel = new JPanel();
+        this.consolePanel = new JPanel();
         TitledBorder commandPanelBorder = new TitledBorder("Console Panel");
         commandPanelBorder.setTitleColor(Color.WHITE);
         this.consolePanel.setBorder(commandPanelBorder);
@@ -126,28 +129,8 @@ public class CommandAndGridView extends AView {
         this.consolePanel.add(scrollPane);
     }
     
-    public JPanel resetConsolePanel() {
-        
-        this.consolePanel = new JPanel();
-        TitledBorder commandPanelBorder = new TitledBorder("Console Panel");
-        commandPanelBorder.setTitleColor(Color.WHITE);
-        this.consolePanel.setBorder(commandPanelBorder);
-        this.consolePanel.setLayout(new FlowLayout());
-        this.consolePanel.setBackground(Color.GRAY);
-        this.consolePanel.setPreferredSize(new Dimension(250,100));
-        this.consolePanel.setSize(new Dimension(250, 100));
-        JTextArea consoleLogger = new JTextArea(42, 20);
-        consoleLogger.setLineWrap(true);
-        consoleLogger.setWrapStyleWord(true);
-        consoleLogger.setText("");
-        
-        PrintStream printStream = new PrintStream(new CustomOutputStream(consoleLogger));
-        System.setOut(printStream);
-        
-        JScrollPane scrollPane = new JScrollPane(consoleLogger);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        this.consolePanel.add(scrollPane);
-        
+    public JPanel resetConsolePanel() {        
+        initializeConsolePanel();
         System.out.println("Resetting console and grid panel.");
         return this.consolePanel;
     }
