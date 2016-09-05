@@ -5,10 +5,6 @@
  */
 
 package com.design.pattern.tetrastar.controller.impl;
-/**
- * @author Akshata, Rachna and Shweta. 
- */
-
 import com.design.pattern.tetrastar.controller.MainDisplayController;
 import com.design.pattern.tetrastar.enums.ScenarioEnum;
 import com.design.pattern.tetrastar.view.CommandAndGridView;
@@ -20,6 +16,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * @author Akshata, Rachna and Shweta. 
+ */
 public class MainDisplayControllerImpl implements MainDisplayController {
 
     // View for MVC pattern

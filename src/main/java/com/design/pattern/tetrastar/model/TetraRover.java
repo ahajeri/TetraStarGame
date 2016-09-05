@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
-/**
- *   @author Akshata, Rachna and Shweta. 
- */
 
 import com.design.pattern.tetrastar.constants.TetraConstants;
 import com.design.pattern.tetrastar.enums.Direction;
@@ -19,7 +16,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
- 
+/**
+ *   @author Akshata, Rachna and Shweta. 
+ */
 public class TetraRover extends TetraPeople {
 
     private Image img, image = null;
@@ -97,6 +96,7 @@ public class TetraRover extends TetraPeople {
             image = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/Surface.jpg"));
         } catch (IOException e) {
             System.err.println("Error occurred while reading image : " + e.getMessage());
+            System.exit(1);
         }
         gridOfLocations[currentLocation.getRow()][currentLocation.getColumn()].setIcon(new ImageIcon(image));
         gridOfLocations[currentLocation.getRow()][currentLocation.getColumn()].setDisabledIcon(new ImageIcon(image));
@@ -120,6 +120,7 @@ public class TetraRover extends TetraPeople {
                 img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/tRover.jpg"));
             } catch (IOException e) {
                 System.err.println("Error occurred " + e.getMessage());
+                System.exit(1);
             }
             setIcons(gridOfLocations);
         }
@@ -147,6 +148,7 @@ public class TetraRover extends TetraPeople {
             img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/tRover.jpg"));
         } catch (IOException e) {
             System.err.println("Error occurred " + e.getMessage());
+            System.exit(1);
         }
 
         gridOfLocations[initialLocation.getRow()][initialLocation.getColumn()].setIcon(new ImageIcon(img));

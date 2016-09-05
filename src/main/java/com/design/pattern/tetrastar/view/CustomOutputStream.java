@@ -4,14 +4,16 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.view;
-/**
- *   @author Akshata, Rachna and  Shweta. 
- */
 
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.swing.JTextArea;
 
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ *   Class to bind Standart Output to a textarea so that anything output on System.out will be 
+ *   printed in console logger's JTextArea
+ */
 public class CustomOutputStream extends OutputStream {
     private JTextArea textArea;
      

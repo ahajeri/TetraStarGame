@@ -8,6 +8,8 @@ package com.design.pattern.tetrastar.model;
 /**
  *
  *  @author Akshata, Rachna and Shweta.
+ *  
+ * Notification to send to observers when something changes for TetraPeople
  */
 public class PeopleNotify {
     

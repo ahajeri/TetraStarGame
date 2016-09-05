@@ -3,29 +3,28 @@ package com.design.pattern.tetrastar.view;
  *   @author Akshata, Rachna and  Shweta. 
  */
 
+import com.design.pattern.tetrastar.constants.TetraConstants;
 import com.design.pattern.tetrastar.enums.PeopleType;
 import com.design.pattern.tetrastar.generator.IdGenerator;
 import com.design.pattern.tetrastar.model.Location;
 import com.design.pattern.tetrastar.model.TFaceGrid;
-import com.design.pattern.tetrastar.model.TFlier;
 import com.design.pattern.tetrastar.model.TetraPeople;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 public abstract class GridDisplayScreen extends JPanel {
 
-    public static final int rows = 7;
-    public static final int columns = 7;
-
-    protected JButton[][] gridOfButtons = new JButton[rows][columns];
+    protected JButton[][] gridOfButtons = new JButton[TetraConstants.maxRows][TetraConstants.maxColumns];
 
     protected IdGenerator idGenerator;
 
-    final int numberOfBlocks = 49;
+    final int numberOfBlocks = TetraConstants.maxRows * TetraConstants.maxColumns;
 
     // Character objects
     protected TetraPeople hero1, hero2, vader, rover1, rover2;
@@ -34,16 +33,14 @@ public abstract class GridDisplayScreen extends JPanel {
     protected TFaceGrid tHero1Loc, tHero2Loc;
     protected TFaceGrid tRover1Loc, tRover2Loc, tMap1Loc;
     protected TFaceGrid tVaderLoc, tMapLoc, tMapbLoc;
+    // A Location to fly to for either a hero or vader
     protected TFaceGrid flyLoc;
     protected TFaceGrid hero1bLoc, hero2bLoc;
 
     // Locations of bases
     protected Location vaderBaseLoc;
     protected Location hero1BaseLoc, hero2BaseLoc;
-    protected Location mapBaseLoc, mapBase1Loc;
-
-    protected TFlier flyIcon;
-    protected JOptionPane messageLabel;
+    protected Location mapBaseLoc;
 
     public abstract void setInitialPositions();
 
@@ -60,14 +57,15 @@ public abstract class GridDisplayScreen extends JPanel {
     }
 
     private void generateGrid() {
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
+        for (int i = 0; i < TetraConstants.maxRows; i++) {
+            for (int j = 0; j < TetraConstants.maxColumns; j++) {
                 this.gridOfButtons[i][j] = new JButton();
                 BufferedImage img = null;
                 try {
                     img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/Surface.jpg"));
                 } catch (IOException e) {
-                    System.err.println("Error occurred while reading imag : " + e.getMessage());
+                    System.err.println("Error occurred while reading image : " + e.getMessage());
+                    System.exit(1);
                 }
                 JButton button = new JButton();
                 button.setIcon(new ImageIcon(img));
@@ -77,15 +75,16 @@ public abstract class GridDisplayScreen extends JPanel {
             }
         }
 
-        this.setLayout(new GridLayout(rows, columns));
+        this.setLayout(new GridLayout(TetraConstants.maxRows, TetraConstants.maxColumns));
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
+        for (int i = 0; i < TetraConstants.maxRows; i++) {
+            for (int j = 0; j < TetraConstants.maxColumns; j++) {
                 BufferedImage img = null;
                 try {
                     img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/Surface.jpg"));
                 } catch (IOException e) {
-                    System.err.println("Error occurred while reading imag : " + e.getMessage());
+                    System.err.println("Error occurred while reading image : " + e.getMessage());
+                    System.exit(1);
                 }
                 JButton button = new JButton();
                 button.setIcon(new ImageIcon(img));
@@ -102,6 +101,7 @@ public abstract class GridDisplayScreen extends JPanel {
             Thread.sleep(500);
         } catch (InterruptedException ex) {
             System.err.println("Error occurred " + ex.getMessage());
+            System.exit(1);
         }
     }
 
@@ -138,7 +138,6 @@ public abstract class GridDisplayScreen extends JPanel {
 
         // set the location of the mapbase.
         mapBaseLoc.setBaseGridLocation(gridOfButtons, tMapbLoc, "MAPBASE");
-        // set the location of the mapbase.
-        //mapBase1Loc.setBaseGridLocation(gridOfButtons, tMapb1Loc, "MAPBASE");
+        
     }
 }

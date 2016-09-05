@@ -2,6 +2,7 @@ package com.design.pattern.tetrastar.encryption;
 /**
  * 
  * @author Akshata, Rachna and Shweta.
+ *  Null design pattern
  */
 
 public class NullEncryptionAlgorithm implements EncryptionAlgorithm {

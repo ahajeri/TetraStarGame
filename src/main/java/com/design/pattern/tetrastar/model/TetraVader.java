@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
-/**
- *   @author Akshata, Rachna and  Shweta. 
- */
-
 import com.design.pattern.tetrastar.constants.TetraConstants;
 import com.design.pattern.tetrastar.enums.Direction;
 import com.design.pattern.tetrastar.enums.EncryptionStrategy;
@@ -21,6 +17,11 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+
+/**
+ *   @author Akshata, Rachna and  Shweta. 
+ *   Tetra Vader
+ */
 public class TetraVader extends TetraPeople {
 
     private Image img, img2, image = null;
@@ -156,6 +157,7 @@ public class TetraVader extends TetraPeople {
                 img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/tVader.jpg"));
             } catch (IOException e) {
                 System.err.println("Error occurred " + e.getMessage());
+                System.exit(1);
             }
             if (!returnToHomePathStatus) {
                 addLocationToPath(newLocation);
@@ -173,6 +175,7 @@ public class TetraVader extends TetraPeople {
             image = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/Surface.jpg"));
         } catch (IOException e) {
             System.err.println("Error occurred reading image : " + e.getMessage());
+            System.exit(1);
         }
         gridOfLocations[currentLocation.getRow()][currentLocation.getColumn()].setIcon(new ImageIcon(image));
         gridOfLocations[currentLocation.getRow()][currentLocation.getColumn()].setDisabledIcon(new ImageIcon(image));
@@ -193,6 +196,7 @@ public class TetraVader extends TetraPeople {
             img2 = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/river.jpg"));
         } catch (IOException e) {
             System.err.println("Exception occurred " + e.getMessage());
+            System.exit(1);
         }
 
         gridOfLocations[initialLocation.getRow()][initialLocation.getColumn()].setIcon(new ImageIcon(img));
@@ -233,8 +237,7 @@ public class TetraVader extends TetraPeople {
             currentLocation = locationToFlyTo;
 
             String oldLocationText = gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].getText();
-            System.out.println("--->" + oldLocationText);
-
+            
             // Check if the vader had entered the Mapbase anytime.						
             if (oldLocationText.equals("MAPBASE")) {
                 flyImg = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/MapBase.jpg"));
@@ -285,6 +288,7 @@ public class TetraVader extends TetraPeople {
             this.flyToLocation(gridOfLocations, newLocation);
         } catch (Exception e) {
             System.err.println("Error occurred " + e.getMessage());
+            System.exit(1);
         }
     }
 

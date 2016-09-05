@@ -11,6 +11,8 @@ import java.util.Date;
 /**
  *
  *  @author Akshata, Rachna and Shweta.
+ * 
+ *  Example of Null Object pattern
  */
 public class NullStarMap extends StarMapComponent {
 

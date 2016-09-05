@@ -2,8 +2,8 @@ package com.design.pattern.tetrastar.enums;
 /**
  * 
  * @author Akshata, Rachna and Shweta.
+ *  Enum to represent type of characters allowed in game (hero, vader, rover)
  */
-
 public enum RoverTypes {
 
     HERO("Hero"),

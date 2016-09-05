@@ -1,8 +1,4 @@
 package com.design.pattern.tetrastar.model;
-/**
- *   @author Akshata, Rachna and Shweta. 
- */
-
 import com.design.pattern.tetrastar.constants.TetraConstants;
 import com.design.pattern.tetrastar.enums.Direction;
 import com.design.pattern.tetrastar.enums.EncryptionStrategy;
@@ -15,6 +11,10 @@ import javax.imageio.ImageIO;
 
 import javax.swing.*;
 
+/**
+ *   @author Akshata, Rachna and Shweta. 
+ *   Tetra Hero
+ */
 public class TetraHero extends TetraPeople {
 
     private Image img, currentImage, newImage, image = null;
@@ -65,7 +65,7 @@ public class TetraHero extends TetraPeople {
             }
         } catch (IOException e) {
             System.err.println("Error occurred " + e.getMessage());
-
+            System.exit(1);
         }
 
         gridOfLocations[initialLocation.getRow()][initialLocation.getColumn()].setText("HERO");
@@ -261,6 +261,7 @@ public class TetraHero extends TetraPeople {
                 image = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/Surface.jpg"));
             } catch (IOException e) {
                 System.err.println("Exception occurred while reading image : " + e.getMessage());
+                System.exit(1);
             }
             gridOfLocations[currentLocation.getRow()][currentLocation.getColumn()].setIcon(new ImageIcon(image));
             gridOfLocations[currentLocation.getRow()][currentLocation.getColumn()].setDisabledIcon(new ImageIcon(image));
@@ -299,11 +300,11 @@ public class TetraHero extends TetraPeople {
 
             } catch (IOException e) {
                 System.err.println("Error occurred " + e.getMessage());
+                System.exit(1);
             }
 
             setIcons(gridOfLocations, currentImage, newImage);
         } else if (characterObject.equals("HEROBASE") || characterObject.equals("MAPBASE")) {
-            System.out.println("TetraHero:CheckandMove");
             PeopleNotify notification = new PeopleNotify();
             notification.people = this;
             notification.baseLocation = newLocation;
@@ -336,6 +337,7 @@ public class TetraHero extends TetraPeople {
             this.flyToLocation(gridOfLocations, newLocation);
         } catch (Exception e) {
             System.err.println("Error occurred " + e.getMessage());
+            System.exit(1);
         }
     }
 

@@ -1,14 +1,14 @@
 package com.design.pattern.tetrastar.model;
-/**
- *  @author Akshata, Rachna and Shweta. 
- */
-
 import com.design.pattern.tetrastar.enums.PeopleType;
 import com.design.pattern.tetrastar.util.CreateMessageUtility;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ *  @author Akshata, Rachna and Shweta. 
+ *    Hero Base
+ */
 public class THeroBase extends Location {
 
     public THeroBase() {
@@ -45,6 +45,7 @@ public class THeroBase extends Location {
                     }                    
                 } catch (IOException e) {
                     System.err.println("Error occurred " + e.getMessage());
+                    System.exit(1);
                 }
 
                 thero.setIcons(gridOfLocations, currentImage, newImage);
@@ -56,6 +57,11 @@ public class THeroBase extends Location {
             String message = "Vader cannot enter HeroBase";
             CreateMessageUtility.createMsg(message);
         }
+    }
+
+    @Override
+    public void accept(LocationVisitor locationVisitor) {
+        locationVisitor.visit(this);
     }
  
 }

@@ -4,36 +4,31 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
+
 /**
- *  @author Akshata, Rachna and Shweta.
+ * @author Akshata, Rachna and Shweta.
  */
 
 import com.design.pattern.tetrastar.encryption.EncryptionAlgorithm;
 import java.util.Date;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 
 public abstract class StarMapComponent implements Cloneable {
 
- 
     int starComponentID;
 
     int numberItems;
 
     int restorationCounter;
- 
+
     TFaceGrid mapLocation;
 
-     boolean encryptionStatus;
-     
-     public void setEncryptionStatus(boolean encryptionStatus)
-     {
-    	 this.encryptionStatus = encryptionStatus;
-     }
+    boolean encryptionStatus;
 
-    
+    public void setEncryptionStatus(boolean encryptionStatus) {
+        this.encryptionStatus = encryptionStatus;
+    }
+
     //To check whether StarMap is encrypted or not.
- 
     public boolean isEncrypted() {
         return encryptionStatus;
     }
@@ -44,7 +39,7 @@ public abstract class StarMapComponent implements Cloneable {
         return (StarMapComponent) super.clone();
     }
 
-   //To check whether StarMap exists at passed Location or not.
+    //To check whether StarMap exists at passed Location or not.
     boolean showSignal(TFaceGrid location) {
         if (location.getRow() == mapLocation.getRow() && location.getColumn() == mapLocation.getColumn()) {
             return true;
@@ -52,7 +47,7 @@ public abstract class StarMapComponent implements Cloneable {
         return false;
     }
 
-   //Set the location of StarMap.
+    //Set the location of StarMap.
     public void setLocation(TFaceGrid newLoc) {
         mapLocation = newLoc;
     }
@@ -78,15 +73,15 @@ public abstract class StarMapComponent implements Cloneable {
     abstract void setEncryptionAlgorithm(EncryptionAlgorithm encrypt);
 
     abstract void addStarMap(StarMapComponent starMap);
-    
-    abstract void removeStarMap(StarMapComponent starMap);
-    
-	public int getRestorationCounter() {
-		return restorationCounter;
-	}
 
-	public void setRestorationCounter(int restorationCounter) {
-		this.restorationCounter = restorationCounter;
-	}
+    abstract void removeStarMap(StarMapComponent starMap);
+
+    public int getRestorationCounter() {
+        return restorationCounter;
+    }
+
+    public void setRestorationCounter(int restorationCounter) {
+        this.restorationCounter = restorationCounter;
+    }
 
 }

@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
-/**
- *  @author Akshata, Rachna and Shweta.
- */
-
 import com.design.pattern.tetrastar.enums.PeopleType;
 import java.awt.Image;
 import java.io.IOException;
@@ -17,8 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
- *
- * @author Rachna Gajre <rgajre@scu.edu>
+ *  @author Akshata, Rachna and Shweta.
  */
 public class TFlier {
 

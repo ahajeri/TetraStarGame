@@ -2,8 +2,8 @@ package com.design.pattern.tetrastar.model;
 /**
  * 
  *  @author Akshata, Rachna and Shweta.
+ *   A co-ordinate on the m * n grid
  */
-
 public class TFaceGrid {
 
     private int row;

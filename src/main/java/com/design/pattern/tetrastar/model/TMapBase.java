@@ -1,11 +1,11 @@
 package com.design.pattern.tetrastar.model;
-/**
- *   @author Akshata, Rachna and Shweta. 
- */
-
 import com.design.pattern.tetrastar.enums.PeopleType;
 import com.design.pattern.tetrastar.util.CreateMessageUtility;
 
+/**
+ *   @author Akshata, Rachna and Shweta. 
+ *   Map Base
+ */
 public class TMapBase extends Location {
 
     private TFaceGrid vaderBaselocation;
@@ -107,4 +107,9 @@ public class TMapBase extends Location {
         } 
     }
 
+    @Override
+    public void accept(LocationVisitor locationVisitor) {
+        locationVisitor.visit(this);
+    }
+    
 }

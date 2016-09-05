@@ -1,6 +1,7 @@
 package com.design.pattern.tetrastar.view;
+
 /**
- *   @author Akshata, Rachna and  Shweta. 
+ * @author Akshata, Rachna and Shweta.
  */
 
 import java.awt.Image;
@@ -30,46 +31,40 @@ import com.design.pattern.tetrastar.util.CreateMessageUtility;
 
 public class Scenario2DisplayScreen extends GridDisplayScreen {
 
-	StarAtlasComposite starAtlas;
-	StarMap starMap1;
-	StarMap starMap2;
-	EncryptionAlgorithm encryptionAlgo;
-	
+    // TODO : Should we move this to GridDisplayScreen abstract class ?
+    private StarAtlasComposite starAtlas;
+    private StarMap starMap1;
+    private StarMap starMap2;
+    private EncryptionAlgorithm encryptionAlgo;
+
     public Scenario2DisplayScreen() {
         super();
     }
-    
+
     @Override
     public void setInitialPositions() {
-    	// Create different home base objects.
+        // Create different home base objects.
         vaderBaseLoc = TVaderBase.getInstance();
         hero1BaseLoc = new THeroBase();
         hero2BaseLoc = new THeroBase();
         mapBaseLoc = new TMapBase();
-       // mapBase1Loc = new TMapBase();
 
-        // Create TetraPeople
-        TetraPeopleFactory rover = new TetraPeopleFactory();
-        // create instances of heroes , vader and rovers.        		
+        // Create instances of heroes, vader and rovers aka TetraPeople using factory
         hero1 = TetraPeopleFactory.createTetraPeople(RoverTypes.HERO, '*');
         hero2 = TetraPeopleFactory.createTetraPeople(RoverTypes.HERO, '#');
         vader = TetraPeopleFactory.createTetraPeople(RoverTypes.VADER, '\0');
         rover1 = TetraPeopleFactory.createTetraPeople(RoverTypes.ROVER, '\0');
         rover2 = TetraPeopleFactory.createTetraPeople(RoverTypes.ROVER, '\0');
 
-        
-        
         tHero1Loc = new TFaceGrid(2, 1);
-		tHero2Loc = new TFaceGrid(5, 4);
-		tRover1Loc = new TFaceGrid(0, 2);
-		tRover2Loc = new TFaceGrid(6, 2);
-		tVaderLoc = new TFaceGrid(3, 3);
-		hero1bLoc = new TFaceGrid(0, 0);
-		hero2bLoc = new TFaceGrid(6, 6);
-		 tMapLoc = new TFaceGrid(3, 3);
-	     tMapbLoc = new TFaceGrid(2, 6);
-
-   
+        tHero2Loc = new TFaceGrid(5, 4);
+        tRover1Loc = new TFaceGrid(0, 2);
+        tRover2Loc = new TFaceGrid(6, 2);
+        tVaderLoc = new TFaceGrid(3, 3);
+        hero1bLoc = new TFaceGrid(0, 0);
+        hero2bLoc = new TFaceGrid(6, 6);
+        tMapLoc = new TFaceGrid(3, 3);
+        tMapbLoc = new TFaceGrid(2, 6);
 
         this.setTetraPeopleToLocation();
 
@@ -85,7 +80,6 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         tMediator.registerTHomeBase(hero2BaseLoc);
         tMediator.registerTHomeBase(vaderBaseLoc);
         tMediator.registerTHomeBase(mapBaseLoc);
-        //tMediator.registerTHomeBase(mapBase1Loc);
 
         /* Initializing StarMaps */
         /* StarAtlas - Case 1 */
@@ -93,12 +87,11 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         starMap1 = new StarMap(idGenerator.nextId(), tMapLoc, "Direction to planet Earth!!");
         starMap2 = new StarMap(idGenerator.nextId(), tMapLoc, "Direction to planet Mars!!");
         /* Get the unique strategy of hero for encryption */
-       
+
         EncryptionStrategy strategy = hero1.getEncryptionStrategy();
 
         /* Using factory method pattern to get Encryption algorithm for an encryption strategy */
         encryptionAlgo = EncryptionAlgorithmFactory.getEncryptionAlgorithmForStrategy(strategy);
-        //System.out.println(encryptionAlgo);
         starAtlas.addStarMap(starMap1);
         starAtlas.addStarMap(starMap2);
         starAtlas.setEncryptionAlgorithm(encryptionAlgo);
@@ -112,30 +105,28 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
             gridOfButtons[0][6].setDisabledIcon(new ImageIcon(img));
         } catch (IOException e) {
             System.err.println("Error occurred " + e.getMessage());
+            System.exit(1);
         }
 
         flyLoc = new TFaceGrid(2, 6);
 
     }
-    
-    
-    
 
     @Override
     public void startSimulation() {
-    	
-    	CreateMessageUtility.createMsg("STARMAP Demo");
-    	System.out.println("STARMAP Demo \n");
-    	
-    	CreateMessageUtility.createMsg("Creating StarAtlas: With two StarMaps");
-    	System.out.println("Creating StarAtlas: With two StarMaps \n");
-    	
-    	starAtlas.setEncryptionStatus(false);
-    	starAtlas.display();
-    	sleepForHalfSecond();
-    	
-    	CreateMessageUtility.createMsg("HERO1 Requests flier");
-    	System.out.println("HERO1 Requests flier \n");
+
+        CreateMessageUtility.createMsg("STARMAP Demo");
+        System.out.println("STARMAP Demo \n");
+
+        CreateMessageUtility.createMsg("Creating StarAtlas: With two StarMaps");
+        System.out.println("Creating StarAtlas: With two StarMaps \n");
+
+        starAtlas.setEncryptionStatus(false);
+        starAtlas.display();
+        sleepForHalfSecond();
+
+        CreateMessageUtility.createMsg("HERO1 Requests flier");
+        System.out.println("HERO1 Requests flier \n");
         hero1.requestToFly();
         sleepForHalfSecond();
 
@@ -145,24 +136,25 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
             hero1.flyToLocation(gridOfButtons, tMapbLoc);
         } catch (Exception e) {
             System.err.println("Error occurred : " + e.getMessage());
+            System.exit(1);
         }
         sleepForHalfSecond();
 
         CreateMessageUtility.createMsg("HERO1 encrypts StarAtlas!!");
         System.out.println("HERO1 encrypts StarAtlas!! \n");
-        starAtlas.encrypt(hero1.getId(), new Date(), ((TetraHero)hero1).getSymbol());
+        starAtlas.encrypt(hero1.getId(), new Date(), ((TetraHero) hero1).getSymbol());
         starAtlas.display();
-        sleepForHalfSecond(); 
-        
+        sleepForHalfSecond();
+
         CreateMessageUtility.createMsg("HERO1 fly back to old location");
         System.out.println("HERO1 fly back to old location \n");
         try {
             hero1.flyToLocation(gridOfButtons, tHero1Loc);
         } catch (Exception e) {
             System.err.println("Error occurred : " + e.getMessage());
+            System.exit(1);
         }
         sleepForHalfSecond();
-        
 
         CreateMessageUtility.createMsg("VADER Demo");
         System.out.println("VADER Demo \n");
@@ -188,14 +180,12 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
             Logger.getLogger(Scenario2DisplayScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         sleepForHalfSecond();
-        
 
         // Create different home base objects.
         vaderBaseLoc = TVaderBase.getInstance();
         hero1BaseLoc = new THeroBase();
         hero2BaseLoc = new THeroBase();
         mapBaseLoc = new TMapBase();
-        //mapBase1Loc = new TMapBase();
 
         // Create TetraPeople
         TetraPeopleFactory rover = new TetraPeopleFactory();
@@ -205,10 +195,8 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         vader = TetraPeopleFactory.createTetraPeople(RoverTypes.VADER, '\0');
         rover1 = TetraPeopleFactory.createTetraPeople(RoverTypes.ROVER, '\0');
         rover2 = TetraPeopleFactory.createTetraPeople(RoverTypes.ROVER, '\0');
-      
-       
-        //tMapb1Loc = new TFaceGrid(3, 6);
 
+        //tMapb1Loc = new TFaceGrid(3, 6);
         this.setTetraPeopleToLocation();
 
         /* Initializing Mediator */
@@ -223,7 +211,6 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         tMediator.registerTHomeBase(hero2BaseLoc);
         tMediator.registerTHomeBase(vaderBaseLoc);
         tMediator.registerTHomeBase(mapBaseLoc);
-        //tMediator.registerTHomeBase(mapBase1Loc);
 
         // Initializing StarMaps 
         // StarAtlas - Case 1 
@@ -233,44 +220,44 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         // Get the unique strategy of hero for encryption 
         EncryptionStrategy strategy = hero1.getEncryptionStrategy();
 
-       //  Using factory method pattern to get Encryption algorithm for an encryption strategy 
+        //  Using factory method pattern to get Encryption algorithm for an encryption strategy 
         encryptionAlgo = EncryptionAlgorithmFactory.getEncryptionAlgorithmForStrategy(strategy);
         stAtlas1.addStarMap(stMap1);
         stAtlas1.addStarMap(stMap2);
         stAtlas1.setEncryptionAlgorithm(encryptionAlgo);
-        stAtlas1.encrypt(hero1.getId(), new Date(), ((TetraHero)hero1).getSymbol());
+        stAtlas1.encrypt(hero1.getId(), new Date(), ((TetraHero) hero1).getSymbol());
         vaderBaseLoc.setStarMapComponent(stAtlas1);
-        
+
         CreateMessageUtility.createMsg("HERO Demo");
         System.out.println("HERO Demo \n");
-        
 
         CreateMessageUtility.createMsg("VADER flies to a empty location");
         System.out.println("VADER flies to a empty location \n");
         try {
-			vader.flyToLocation(gridOfButtons, new TFaceGrid(0, 4));
-			hero1.setVaderExit(true);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+            vader.flyToLocation(gridOfButtons, new TFaceGrid(0, 4));
+            hero1.setVaderExit(true);
+        } catch (Exception e) {
+            System.err.println("Error occurred " + e.getMessage());
+            System.exit(1);
+        }
         sleepForHalfSecond();
 
         CreateMessageUtility.createMsg("HERO1 requests flier");
         System.out.println("HERO1 requests flier \n");
         hero1.requestToFly();
         sleepForHalfSecond();
-        
+
         CreateMessageUtility.createMsg("HERO1 flys to StarAtlas MapBase location");
         System.out.println("HERO1 flys to StarAtlas MapBase location  \n");
         try {
-    
+
             hero1.flyToLocation(gridOfButtons, tMapbLoc);
         } catch (Exception e) {
             System.err.println("Error occurred : " + e.getMessage());
+            System.exit(1);
         }
         sleepForHalfSecond();
-  
+
     }
 
 }
