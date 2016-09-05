@@ -1,4 +1,5 @@
 package com.design.pattern.tetrastar.model;
+
 import com.design.pattern.tetrastar.enums.Direction;
 import com.design.pattern.tetrastar.enums.EncryptionStrategy;
 import com.design.pattern.tetrastar.enums.PeopleType;
@@ -7,16 +8,18 @@ import java.util.Observer;
 import javax.swing.*;
 
 /**
- *   @author Akshata, Rachna and Shweta. 
- *   Abstract class for Tetra People
+ * @author Akshata, Rachna and Shweta. Abstract class for Tetra People
  */
 public abstract class TetraPeople {
 
     protected int id;
-    
+
     protected TetraPeopleObservable peopleObservable;
 
     protected TFaceGrid currentLocation, newLocation, oldLocation;
+
+    // Visitor pattern function to accept visitor that processes map present at home base
+    public abstract void accept(MapVisitor mapVisitor);
 
     public abstract void makeMove(Direction direction, JButton[][] gridOfLocations);
 

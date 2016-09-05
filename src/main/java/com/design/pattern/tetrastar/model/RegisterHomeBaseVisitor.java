@@ -7,7 +7,7 @@ package com.design.pattern.tetrastar.model;
 
 /**
  * @author Akshata, Rachna and Shweta.
- * Visitor for a Location of a base 
+ * Concrete Visitor for a Location of a base used to register a map base
  * Example of Visitor pattern
  */
 public class RegisterHomeBaseVisitor implements LocationVisitor {

@@ -98,44 +98,46 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
 
             // Hero1 moves demo
             CreateMessageUtility
-                    .createMsg("All Tetra planet inhabits move demo");
-            CreateMessageUtility.createMsg("HERO1 Moves North Location");
-            System.out.println("HERO1 Moves North Location");
+                    .createMsg("Demo for movements of all inhabitants of Tetra Planet");
+            
+            System.out.println("Hero1 movements demo");
+            CreateMessageUtility.createMsg("Hero1 wants to move north.");
+            System.out.println("Hero1 wants to move north.");
             hero1.makeInitialMove(Direction.NORTH, gridOfButtons, tHero1Loc);
             sleepForHalfSecond();
 
-            CreateMessageUtility.createMsg("HERO1 Moves East");
-            System.out.println("HERO1 Moves East Location");
+            CreateMessageUtility.createMsg("Hero1 wants to move east.");
+            System.out.println("Hero1 wants to move east.");
             hero1.makeMove(Direction.EAST, gridOfButtons);
             sleepForHalfSecond();
 
-            CreateMessageUtility.createMsg("HERO1 Moves South");
-            System.out.println("HERO1 Moves South Location");
+            CreateMessageUtility.createMsg("Hero1 wants to move south.");
+            System.out.println("Hero1 wants to move south.");
             hero1.makeMove(Direction.SOUTH, gridOfButtons);
             sleepForHalfSecond();
 
-            CreateMessageUtility.createMsg("HERO1 Moves East");
-            System.out.println("HERO1 Moves East Location");
+            CreateMessageUtility.createMsg("Hero1 wants to move east.");
+            System.out.println("Hero1 wants to move east.");
             hero1.makeMove(Direction.EAST, gridOfButtons);
             sleepForHalfSecond();
 
             // Hero2 fly demo
-            CreateMessageUtility.createMsg("HERO2 Fly Demo");
-            System.out.println("HERO2 Fly Demo");
-            CreateMessageUtility.createMsg("HERO2 Moves South");
-            System.out.println("HERO2 Moves South Location");
+            CreateMessageUtility.createMsg("Hero2 fly demo");
+            System.out.println("Hero2 fly demo");
+            CreateMessageUtility.createMsg("Hero2 wants to move south.");
+            System.out.println("Hero2 wants to move south.");
             hero2.makeMove(Direction.SOUTH, gridOfButtons);
 
             sleepForHalfSecond();
 
             CreateMessageUtility
-                    .createMsg("HERO2 Request flier to fly  at different location");
-            System.out.println("HERO2 Request flier to fly at different location");
+                    .createMsg("Hero2 requests flier to fly at different location");
+            System.out.println("Hero2 requests flier to fly at different location");
             hero2.requestToFly();
             sleepForHalfSecond();
 
-            CreateMessageUtility.createMsg("HERO2 fly to empty Location");
-            System.out.println("HERO2 fly to empty Location");
+            CreateMessageUtility.createMsg("Hero2 wants to fly to empty location.");
+            System.out.println("Hero2 wants to fly to empty location.");
             try {
                 hero2.flyToLocation(gridOfButtons, new TFaceGrid(1, 4));
             } catch (Exception e) {
@@ -145,38 +147,38 @@ public class Scenario1DisplayScreen extends GridDisplayScreen {
             sleepForHalfSecond();
 
             // Vader fly moves demo
-            CreateMessageUtility.createMsg("VADER moves Demo");
-            System.out.println("VADER moves Demo");
-            CreateMessageUtility.createMsg("VADER flies to a empty location");
-            System.out.println("VADER flies to a empty location");
+            CreateMessageUtility.createMsg("Vader moves demo");
+            System.out.println("Vader moves demo");
+            CreateMessageUtility.createMsg("Vader wants to fly to empty location.");
+            System.out.println("Vader wants to fly to empty location.");
             vader.flyToLocation(gridOfButtons, new TFaceGrid(2, 5));
             sleepForHalfSecond();
 
             hero1.setVaderExit(true);
             CreateMessageUtility
-                    .createMsg("VADER try to fly back to his base location");
-            System.out.println("VADER try to fly back to his base location");
+                    .createMsg("Vader wants to fly back to his base location");
+            System.out.println("Vader wants to fly back to his base location");
             vader.flyToLocation(gridOfButtons, tVaderLoc);
             sleepForHalfSecond();
 
             // Rover Demo
-            CreateMessageUtility.createMsg("ROVER Moves Demo");
-            System.out.println("ROVER Moves Demo");
-            CreateMessageUtility.createMsg("ROVER1 Moves North location");
-            System.out.println("ROVER1 Moves North location");
+            CreateMessageUtility.createMsg("Rover moves demo");
+            System.out.println("Rover moves demo");
+            CreateMessageUtility.createMsg("Rover1 wants to move to north.");
+            System.out.println("Rover1 wants to move to north.");
             rover1.makeInitialMove(Direction.NORTH, gridOfButtons, tRover1Loc);
             sleepForHalfSecond();
 
-            CreateMessageUtility.createMsg("ROVER1 Moves East location");
-            System.out.println("ROVER1 Moves East location");
+            CreateMessageUtility.createMsg("Rover1 wants to move to east.");
+            System.out.println("Rover1 wants to move to east.");
             rover1.makeMove(Direction.EAST, gridOfButtons);
             sleepForHalfSecond();
 
-            CreateMessageUtility.createMsg("ROVER2 try to Fly Demo");
-            System.out.println("ROVER2 try to Fly Demo");
+            CreateMessageUtility.createMsg("Rover2 tries to fly demo");
+            System.out.println("Rover2 tries to fly demo");
             CreateMessageUtility
-                    .createMsg("ROVER2 wants to fly to different location");
-            System.out.println("ROVER2 wants to fly to different location");
+                    .createMsg("Rover2 wants to fly to different location");
+            System.out.println("Rover2 wants to fly to different location");
             rover2.requestToFly();
             sleepForHalfSecond();
         } catch (Exception ex) {

@@ -48,8 +48,6 @@ public class TetraPeopleObserverAndMediator implements Observer {
                 }
             }
         } else if (NotificationType.VADERBASE.equals(receivedObject.notificationType)) {
-            String s = "Enters into Vader base";
-            CreateMessageUtility.createMsg(s);
             try {
                 vaderBaseHome.processMap(receivedObject.getPeople());
             } catch (Exception e) {

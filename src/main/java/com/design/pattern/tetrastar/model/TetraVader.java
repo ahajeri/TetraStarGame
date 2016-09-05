@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
+
 import com.design.pattern.tetrastar.constants.TetraConstants;
 import com.design.pattern.tetrastar.enums.Direction;
 import com.design.pattern.tetrastar.enums.EncryptionStrategy;
@@ -17,10 +18,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-
 /**
- *   @author Akshata, Rachna and  Shweta. 
- *   Tetra Vader
+ * @author Akshata, Rachna and Shweta. Tetra Vader
  */
 public class TetraVader extends TetraPeople {
 
@@ -60,7 +59,7 @@ public class TetraVader extends TetraPeople {
         }
         return null;
     }
-    
+
     public void reInitPath() {
         while (!returnToHomePath.isEmpty()) {
             returnToHomePath.pop();
@@ -92,6 +91,7 @@ public class TetraVader extends TetraPeople {
         int newRow = currentLocation.getRow() - 1;
         if (newRow < TetraConstants.minRows) {
             String s = "Cannot move North. Out of the Grid";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         } else {
             newLocation = new TFaceGrid(newRow, currentLocation.getColumn());
@@ -104,6 +104,7 @@ public class TetraVader extends TetraPeople {
         int newRow = currentLocation.getRow() + 1;
         if (newRow > TetraConstants.maxRows) {
             String s = "Cannot move South. Out of the Grid";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         } else {
             newLocation = new TFaceGrid(newRow, currentLocation.getColumn());
@@ -116,6 +117,7 @@ public class TetraVader extends TetraPeople {
         int newCol = currentLocation.getColumn() + 1;
         if (newCol > TetraConstants.maxColumns) {
             String s = "Cannot move East. Out of the Grid";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         } else {
             newLocation = new TFaceGrid(currentLocation.getRow(), newCol);
@@ -128,6 +130,7 @@ public class TetraVader extends TetraPeople {
         int newCol = currentLocation.getColumn() - 1;
         if (newCol < TetraConstants.minColumns) {
             String s = "Cannot move West. Out of the Grid";
+            System.out.println(s);
             CreateMessageUtility.createMsg(s);
         } else {
             newLocation = new TFaceGrid(currentLocation.getRow(), newCol);
@@ -153,6 +156,7 @@ public class TetraVader extends TetraPeople {
     private void checkAndMove(JButton[][] gridOfLocations, TFaceGrid newLocation) {
         String characterObject = checkLocation(gridOfLocations, newLocation);
         if (characterObject.equals("empty")) {
+            System.out.println("Vader wants to move to grid location " + newLocation.getRow() + "  " + newLocation.getColumn());                
             try {
                 img = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/tVader.jpg"));
             } catch (IOException e) {
@@ -163,9 +167,9 @@ public class TetraVader extends TetraPeople {
                 addLocationToPath(newLocation);
             }
             setIcons(gridOfLocations);
-
         } else {
-            String s = "Location occupied. Fly to some other location.";
+            String s = "This location is occupied. Go to some other location.";
+            System.out.println("This location [" + newLocation.getRow() + "][" + newLocation.getColumn() + "] is occupied. Go to some other location.");
             CreateMessageUtility.createMsg(s);
         }
     }
@@ -229,6 +233,8 @@ public class TetraVader extends TetraPeople {
 
         String characterObj = checkLocation(gridOfLocations, locationToFlyTo);
 
+        System.out.println("Vader wants to fly to grid location " + locationToFlyTo.getRow() + " " + locationToFlyTo.getColumn());
+        
         if (characterObj.equals("empty") || characterObj.equals("HEROBASE") || characterObj.equals("MAPBASE") || characterObj.equals("VADERBASE")) {
             ArrayList newSetLocation = (ArrayList) flyVehicle.flyToLocation(gridOfLocations, currentLocation, locationToFlyTo, PeopleType.VADER);
 
@@ -237,7 +243,7 @@ public class TetraVader extends TetraPeople {
             currentLocation = locationToFlyTo;
 
             String oldLocationText = gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].getText();
-            
+
             // Check if the vader had entered the Mapbase anytime.						
             if (oldLocationText.equals("MAPBASE")) {
                 flyImg = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/MapBase.jpg"));
@@ -248,7 +254,6 @@ public class TetraVader extends TetraPeople {
                 gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(flyImg));
                 gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(flyImg));
             } else if (oldLocationText.equals("empty") || (oldLocationText.equals(""))) {
-                //gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(null);
                 image = ImageIO.read(getClass().getResource("/com/design/pattern/tetrastar/images/Surface.jpg"));
                 gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setIcon(new ImageIcon(image));
                 gridOfLocations[oldLocation.getRow()][oldLocation.getColumn()].setDisabledIcon(new ImageIcon(image));
@@ -294,7 +299,13 @@ public class TetraVader extends TetraPeople {
 
     @Override
     public void requestToFly() {
+        System.out.println("Vader requests for flier");
         flyVehicle = new TFlier();
+    }
+
+    @Override
+    public void accept(MapVisitor mapVisitor) {
+        mapVisitor.visit(this);
     }
 
     @Override

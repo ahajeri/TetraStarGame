@@ -4,15 +4,6 @@ package com.design.pattern.tetrastar.view;
  * @author Akshata, Rachna and Shweta.
  */
 
-import java.awt.Image;
-import java.io.IOException;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-
 import com.design.pattern.tetrastar.encryption.EncryptionAlgorithm;
 import com.design.pattern.tetrastar.encryption.EncryptionAlgorithmFactory;
 import com.design.pattern.tetrastar.enums.Direction;
@@ -28,6 +19,13 @@ import com.design.pattern.tetrastar.model.TetraHero;
 import com.design.pattern.tetrastar.model.TetraPeopleFactory;
 import com.design.pattern.tetrastar.model.TetraPeopleObserverAndMediator;
 import com.design.pattern.tetrastar.util.CreateMessageUtility;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class Scenario2DisplayScreen extends GridDisplayScreen {
 
@@ -125,13 +123,13 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         starAtlas.display();
         sleepForHalfSecond();
 
-        CreateMessageUtility.createMsg("HERO1 Requests flier");
-        System.out.println("HERO1 Requests flier \n");
+        CreateMessageUtility.createMsg("Hero1 reqests a flier");
+        System.out.println("Hero1 reqests a flier \n");
         hero1.requestToFly();
         sleepForHalfSecond();
 
-        CreateMessageUtility.createMsg("HERO1 flys to StarAtlas MapBase location");
-        System.out.println("HERO1 flys to StarAtlas MapBase location \n");
+        CreateMessageUtility.createMsg("Hero1 wants to fly to StarAtlas MapBase location");
+        System.out.println("Hero1 wants to fly to StarAtlas MapBase location \n");
         try {
             hero1.flyToLocation(gridOfButtons, tMapbLoc);
         } catch (Exception e) {
@@ -140,14 +138,14 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         }
         sleepForHalfSecond();
 
-        CreateMessageUtility.createMsg("HERO1 encrypts StarAtlas!!");
-        System.out.println("HERO1 encrypts StarAtlas!! \n");
+        CreateMessageUtility.createMsg("Hero1 wants to encrypt StarAtlas!!");
+        System.out.println("Hero1 wants to encrypt StarAtlas!! \n");
         starAtlas.encrypt(hero1.getId(), new Date(), ((TetraHero) hero1).getSymbol());
         starAtlas.display();
         sleepForHalfSecond();
 
-        CreateMessageUtility.createMsg("HERO1 fly back to old location");
-        System.out.println("HERO1 fly back to old location \n");
+        CreateMessageUtility.createMsg("Hero1 wants to fly back to old location");
+        System.out.println("Hero1 wants to fly back to old location \n");
         try {
             hero1.flyToLocation(gridOfButtons, tHero1Loc);
         } catch (Exception e) {
@@ -156,10 +154,10 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         }
         sleepForHalfSecond();
 
-        CreateMessageUtility.createMsg("VADER Demo");
-        System.out.println("VADER Demo \n");
-        CreateMessageUtility.createMsg("VADER flies to North location");
-        System.out.println("VADER flies to North location \n");
+        CreateMessageUtility.createMsg("Vader Demo");
+        System.out.println("Vader Demo \n");
+        CreateMessageUtility.createMsg("Vader wants to fly to north.");
+        System.out.println("Vader wants to fly to north. \n");
         try {
             vader.flyToLocation(gridOfButtons, new TFaceGrid(1, 2));
         } catch (Exception ex) {
@@ -167,13 +165,13 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         }
         sleepForHalfSecond();
 
-        CreateMessageUtility.createMsg("VADER moves to East location");
-        System.out.println("VADER moves to East location \n");
+        CreateMessageUtility.createMsg("Vader wants to fly to east.");
+        System.out.println("Vader wants to fly to east. \n");
         vader.makeMove(Direction.EAST, gridOfButtons);
         sleepForHalfSecond();
 
-        CreateMessageUtility.createMsg("VADER fly");
-        System.out.println("VADER fly \n");
+        CreateMessageUtility.createMsg("Vader wants to fly to map base");
+        System.out.println("Vader wants to fly to map base \n");
         try {
             vader.flyToLocation(gridOfButtons, tMapbLoc);
         } catch (Exception ex) {
@@ -181,6 +179,9 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         }
         sleepForHalfSecond();
 
+        
+        //   Reinitialize again
+        
         // Create different home base objects.
         vaderBaseLoc = TVaderBase.getInstance();
         hero1BaseLoc = new THeroBase();
@@ -228,11 +229,11 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         stAtlas1.encrypt(hero1.getId(), new Date(), ((TetraHero) hero1).getSymbol());
         vaderBaseLoc.setStarMapComponent(stAtlas1);
 
-        CreateMessageUtility.createMsg("HERO Demo");
-        System.out.println("HERO Demo \n");
+        CreateMessageUtility.createMsg("Hero demo");
+        System.out.println("Hero demo \n");
 
-        CreateMessageUtility.createMsg("VADER flies to a empty location");
-        System.out.println("VADER flies to a empty location \n");
+        CreateMessageUtility.createMsg("Vader wants to fly to empty location");
+        System.out.println("Vader wants to fly to empty location \n");
         try {
             vader.flyToLocation(gridOfButtons, new TFaceGrid(0, 4));
             hero1.setVaderExit(true);
@@ -242,13 +243,13 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         }
         sleepForHalfSecond();
 
-        CreateMessageUtility.createMsg("HERO1 requests flier");
-        System.out.println("HERO1 requests flier \n");
+        CreateMessageUtility.createMsg("Hero1 wants to request a flier");
+        System.out.println("Hero1 wants to request a flier \n");
         hero1.requestToFly();
         sleepForHalfSecond();
 
-        CreateMessageUtility.createMsg("HERO1 flys to StarAtlas MapBase location");
-        System.out.println("HERO1 flys to StarAtlas MapBase location  \n");
+        CreateMessageUtility.createMsg("Hero1 wants to fly to StarAtlas MapBase location");
+        System.out.println("Hero1 wants to fly to StarAtlas MapBase location  \n");
         try {
 
             hero1.flyToLocation(gridOfButtons, tMapbLoc);

@@ -1,10 +1,10 @@
 package com.design.pattern.tetrastar.model;
+
 import com.design.pattern.tetrastar.enums.PeopleType;
 import com.design.pattern.tetrastar.util.CreateMessageUtility;
 
 /**
- *   @author Akshata, Rachna and Shweta. 
- *   Map Base
+ * @author Akshata, Rachna and Shweta. Map Base
  */
 public class TMapBase extends Location {
 
@@ -13,103 +13,121 @@ public class TMapBase extends Location {
     public TMapBase() {
         starMap = new NullStarMap();
     }
-    
+
     @Override
     public String getImageName() {
         return "mapBase.jpg";
     }
 
     @Override
-    public void processMap(TetraPeople people) throws Exception {
-        // Process request according to different Tetra People.
-        if (people instanceof TetraHero) {
-            TetraHero thero = (TetraHero) people;
-            if (thero.getOldstarMap() == null) {
-                boolean mapPresent = starMap.showSignal(this.getGridLocation());
-              
-                if (mapPresent) {
-                	System.out.println("StarAtlas is present at "+ "["+this.gridLocation.getRow()+"," + this.gridLocation.getColumn()+"]");
-                    if (starMap.isEncrypted()) {
-                        if (starMap.isEncryptedByMe(people.getId())) {
-                            String s = "Hero enters MapBase and map is encrypted by him";
-                            CreateMessageUtility.createMsg(s);
-                            starMap.decrypt(people.getId());
-                            starMap.display();
-                        } else {
-                            String s = "Hero enters MapBase and map encrypted by other hero";
-                            CreateMessageUtility.createMsg(s);
-                            starMap.encrypt(people.getId(), null, '\0');
-                            starMap.display();
-                        }
-                    } else {
-                        String s = "Hero enters MapBase and there exists original non-encrypted map";
+    public void processMap(TetraPeople people) {
+        /**
+         * Process request according to different Tetra People using visitor
+         * pattern and avoid using instanceof
+         */
+        people.accept(processMapVisitor);
+    }
+
+    @Override
+    public void processMapByHero(TetraHero tHero) {
+        if (tHero.getOldstarMap() == null) {
+            boolean mapPresent = starMap.showSignal(this.getGridLocation());
+            if (mapPresent) {
+                System.out.println("StarAtlas is present at " + "[" + this.gridLocation.getRow() + "," + this.gridLocation.getColumn() + "]");
+                if (starMap.isEncrypted()) {
+                    if (starMap.isEncryptedByMe(tHero.getId())) {
+                        String s = "Hero enters MapBase and map is encrypted by him";
+                        System.out.println("Hero with heroId " + tHero.getId() + " enters MapBase and map is encrypted by him previously.");
                         CreateMessageUtility.createMsg(s);
-                        //starMap.display();
+                        starMap.decrypt(tHero.getId());
+                        starMap.display();
+                    } else {
+                        String s = "Hero enters MapBase and map encrypted by other hero";
+                        System.out.println("Hero with heroId " + tHero.getId() + " enters MapBase and map is encrypted by other hero previously.");
+                        CreateMessageUtility.createMsg(s);
+                        starMap.encrypt(tHero.getId(), null, '\0');
+                        starMap.display();
                     }
                 } else {
-                    String s = "Hero enters MapBase, but there is no map";
+                    String s = "Hero enters MapBase and there exists original non-encrypted map";
+                    System.out.println("Hero with heroId " + tHero.getId() + " enters MapBase and non-encrypted map is found in mapbase.");
                     CreateMessageUtility.createMsg(s);
-                    vaderBaselocation = new TFaceGrid(3, 3);
-                    thero.setMapToVader(this.getGridLocation());
-
-                    thero.flyToLocation(gridOfLocations, vaderBaselocation);
                 }
             } else {
-                String message = "Hero enters MapBase with encrypted map";
-                CreateMessageUtility.createMsg(message);
-                
-                starMap.setEncryptionStatus(true);
-            	
-                boolean enc = starMap.isEncrypted();
-            	if(enc == true){
-            		int restoreCount = starMap.getRestorationCounter();
-            		System.out.println("\n StarAtlas was already encrypted before VADER stoles\n");
-            		System.out.println("Therefore, HERO1 increments restoration counter \n");
-                    System.out.println("Old Restoration counter:" + restoreCount);
-                    restoreCount = restoreCount + 1;
-                    starMap.setRestorationCounter(restoreCount);
-                    System.out.println("New Restoration counter:" + starMap.getRestorationCounter() + " \n");
-            	}
-            	
-                
-                starMap = thero.getOldstarMap();
-                starMap.setLocation(this.getGridLocation());
-
-                if (thero.getId() == 1) {
-                    thero.flyToLocation(gridOfLocations, new TFaceGrid(6, 6));
-                } else {
-                    thero.flyToLocation(gridOfLocations, new TFaceGrid(0, 0));
+                String s = "Hero enters MapBase, but there is no map";
+                System.out.println("Hero with heroId " + tHero.getId() + " enters MapBase but there is no map in mapbase.");
+                System.out.println("Hero with heroId " + tHero.getId() + " flies to VaderBase location to check if map is there.");
+                CreateMessageUtility.createMsg(s);
+                vaderBaselocation = new TFaceGrid(3, 3);
+                tHero.setMapToVader(this.getGridLocation());
+                try {
+                    tHero.flyToLocation(gridOfLocations, vaderBaselocation);
+                } catch (Exception e) {
+                    System.err.println("Error occurred " + e.getMessage());
+                    System.exit(1);
                 }
             }
-        } else if (people instanceof TetraRover) {
-            String message = "Rover cannot enter MapBase";
+        } else {
+            String message = "Hero enters MapBase with encrypted map";
             CreateMessageUtility.createMsg(message);
-        } else if (people instanceof TetraVader) {
-            TetraVader tVader = (TetraVader) people;
-            TFaceGrid oldLoc, newLoc;
-            String message = "Vader enters MapBase to steal map";
-            CreateMessageUtility.createMsg(message);
-
-            tVader.setReturnToHomePathStatus(true);
-
-            // Vader flies back to its Vaderbase by backtracking its path.
-            oldLoc = getGridLocation();
-            newLoc = tVader.extractLastLocationFromPath();
-            while (newLoc != null) {
-                message = "Vader moving to VaderBase";
-                CreateMessageUtility.createMsg(message);
-                tVader.flyWithMap(starMap, gridOfLocations, oldLoc, newLoc);
-                oldLoc = newLoc;
-                newLoc = tVader.extractLastLocationFromPath();
+            System.out.println("Hero with heroId " + tHero.getId() + " enters MapBase with encrypted map.");
+            starMap.setEncryptionStatus(true);
+            boolean enc = starMap.isEncrypted();
+            if (enc == true) {
+                int restoreCount = starMap.getRestorationCounter();
+                System.out.println("\n StarAtlas was already encrypted before Vader stole it\n");
+                System.out.println("Therefore, Hero1 increments restoration counter \n");
+                System.out.println("Old Restoration counter:" + restoreCount);
+                restoreCount = restoreCount + 1;
+                starMap.setRestorationCounter(restoreCount);
+                System.out.println("New Restoration counter:" + starMap.getRestorationCounter() + " \n");
             }
-            // Map set to nullObject
-            this.starMap = new NullStarMap(); 
-        } 
+            starMap = tHero.getOldstarMap();
+            starMap.setLocation(this.getGridLocation());
+            try {
+                if (PeopleType.HERO1.equals(tHero.getHeroType())) {
+                    tHero.flyToLocation(gridOfLocations, new TFaceGrid(6, 6));
+                } else if (PeopleType.HERO2.equals(tHero.getHeroType())) {
+                    tHero.flyToLocation(gridOfLocations, new TFaceGrid(0, 0));
+                }
+            } catch (Exception e) {
+                System.err.println("Error occurred " + e.getMessage());
+                System.exit(1);
+            }
+        }
+    }
+
+    @Override
+    public void processMapByRover(TetraRover tRover) {
+        String message = "Rover cannot enter MapBase";
+        System.out.println(message);
+        CreateMessageUtility.createMsg(message);
+    }
+
+    @Override
+    public void processMapByVader(TetraVader tVader) {
+        TFaceGrid oldLoc, newLoc;
+        String message = "Vader enters MapBase to steal map";
+        System.out.println(message);
+        CreateMessageUtility.createMsg(message);
+        tVader.setReturnToHomePathStatus(true);
+        // Vader flies back to its Vaderbase by backtracking its path.
+        oldLoc = getGridLocation();
+        newLoc = tVader.extractLastLocationFromPath();
+        while (newLoc != null) {
+            message = "Vader flying back to VaderBase with stolen map by backtracking";
+            CreateMessageUtility.createMsg(message);
+            tVader.flyWithMap(starMap, gridOfLocations, oldLoc, newLoc);
+            oldLoc = newLoc;
+            newLoc = tVader.extractLastLocationFromPath();
+        }
+        // Map set to nullObject
+        this.starMap = new NullStarMap();
     }
 
     @Override
     public void accept(LocationVisitor locationVisitor) {
         locationVisitor.visit(this);
     }
-    
+
 }
