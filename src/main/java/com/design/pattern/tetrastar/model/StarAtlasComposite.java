@@ -12,8 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *  @author Akshata, Rachna and Shweta.
- *   Composite Design Pattern
+ * @author Akshata, Rachna and Shweta. Composite Design Pattern
  */
 public class StarAtlasComposite extends StarMapComponent {
 
@@ -144,7 +143,7 @@ public class StarAtlasComposite extends StarMapComponent {
     public void display() {
         StarMapComponent map;
 
-       if (encryptionStatus != true) {
+        if (encryptionStatus != true) {
             createIterator(listStarMapComponent);
             starMapComponentIterator.begin();
             while (starMapComponentIterator.hasNext()) {
@@ -176,7 +175,7 @@ public class StarAtlasComposite extends StarMapComponent {
             message += "\n";
             message += "\t";
             message += map.getBody();
-           
+
         }
         message += "\n";
         for (int i = 0; i < 50; ++i) {
@@ -184,7 +183,6 @@ public class StarAtlasComposite extends StarMapComponent {
         }
         return message;
     }
-    
 
     /**
      * Set the encryption Algorithm.
@@ -208,9 +206,9 @@ public class StarAtlasComposite extends StarMapComponent {
         numberItems++;
     }
 
-	@Override
-	void removeStarMap(StarMapComponent starMap) {
+    @Override
+    void removeStarMap(StarMapComponent starMap) {
 		// TODO Auto-generated method stub
-		
-	}
+
+    }
 }

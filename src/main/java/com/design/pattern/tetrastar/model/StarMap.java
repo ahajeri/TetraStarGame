@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.design.pattern.tetrastar.model;
+
 import com.design.pattern.tetrastar.encryption.EncryptionAlgorithm;
 import com.design.pattern.tetrastar.util.CreateMessageUtility;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *  @author Akshata, Rachna and Shweta.
+ * @author Akshata, Rachna and Shweta.
  */
 public class StarMap extends StarMapComponent {
 
@@ -52,12 +53,10 @@ public class StarMap extends StarMapComponent {
         return body;
     }
 
-
     @Override
     public void encrypt(int heroID, Date date, char symbol) {
         EncryptingHero encryptingHero = null;
         EncryptingHero previousHero;
-        String strategy = null;
         boolean alreadyEncrypted = false;
 
         if (encryptionStatus == true) {
@@ -103,11 +102,10 @@ public class StarMap extends StarMapComponent {
             if (previousHero.getHeroID() == heroID) {
                 body = encryptionAlgo.decrypt(body);
                 return;
-            }
-            else {
-            	String message = "Hero" + heroID + " cannot decrypt the map, as it is not encrypted by him!";
-            	CreateMessageUtility.createMsg(message);
-            	return;
+            } else {
+                String message = "Hero" + heroID + " cannot decrypt the map, as it is not encrypted by him!";
+                CreateMessageUtility.createMsg(message);
+                return;
             }
         }
     }
@@ -137,10 +135,10 @@ public class StarMap extends StarMapComponent {
      * Display the StarMap Contents.
      */
     @Override
-     public void display() {
+    public void display() {
         String message = null;
         if (encryptionStatus != true) {
-        	 message = nonEncryptedDisplay();
+            message = nonEncryptedDisplay();
         } else {
             message = encryptedDisplay();
             for (int i = 0; i < 50; ++i) {
@@ -198,7 +196,6 @@ public class StarMap extends StarMapComponent {
         return message;
     }
 
-    
     /**
      * Set the encryption Algorithm.
      *
@@ -210,16 +207,16 @@ public class StarMap extends StarMapComponent {
         this.encryptionAlgo = encryptAlgo;
     }
 
-	@Override
-	void addStarMap(StarMapComponent starMap) {
+    @Override
+    void addStarMap(StarMapComponent starMap) {
 		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	void removeStarMap(StarMapComponent starMap) {
+    }
+
+    @Override
+    void removeStarMap(StarMapComponent starMap) {
 		// TODO Auto-generated method stub
-		
-	}
+
+    }
 
 }
