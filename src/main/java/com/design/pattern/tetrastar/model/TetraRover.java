@@ -19,7 +19,7 @@ import javax.swing.JButton;
 /**
  * @author Akshata, Rachna and Shweta.
  */
-public class TetraRover extends TetraPeople {
+public class TetraRover extends TetraPeople implements TRoverOriginatorInterface {
 
     private Image img, image = null;
 
@@ -182,6 +182,19 @@ public class TetraRover extends TetraPeople {
     @Override
     public void accept(MapVisitor mapVisitor) {
         mapVisitor.visit(this);
+    }
+
+    @Override
+    public TetraRoverMemento backupLastPosition() {
+        return new TetraRoverMemento(this.currentLocation);
+    }
+
+    @Override
+    public void restoreLastPosition(TetraRoverMemento tetraRoverMemento, JButton[][] gridOfLocations) {
+        int row = tetraRoverMemento.getSavedLocation().getRow();
+        int col = tetraRoverMemento.getSavedLocation().getColumn();
+        this.newLocation = new TFaceGrid(row, col);
+        checkLocation(gridOfLocations, newLocation);
     }
 
 }

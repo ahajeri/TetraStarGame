@@ -7,7 +7,8 @@ package com.design.pattern.tetrastar.enums;
 public enum ScenarioEnum {
 
     SCENARIO1(1, "Scenario1", "Scenario1:Moving all characters."),
-    SCENARIO2(2, "Scenario2", "Scenario2:StarMap and StarAtlas encrypt or steal.");
+    SCENARIO2(2, "Scenario2", "Scenario2:StarMap and StarAtlas encrypt or steal."),
+    SCENARIO3(3, "Scenario3", "Scenario3:Undo move for Rover.");
     
     private int scenarioNumber;
     private String scenarioName;
