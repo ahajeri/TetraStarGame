@@ -11,7 +11,14 @@ public class StarMapComponentManager {
     }
 
     public static StarMapComponent getStarMapComponent(Integer key) {
-        return starHashMap.get(key);
+        StarMapComponent map = starHashMap.get(key);
+        try {
+            return map.clone();
+        } catch (CloneNotSupportedException e) {
+            System.err.println("Error Occurred : " + e.getMessage());
+            System.exit(1);
+        }
+        return map;
     }
 
 }
