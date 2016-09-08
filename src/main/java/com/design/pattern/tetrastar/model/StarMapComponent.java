@@ -16,7 +16,15 @@ public abstract class StarMapComponent implements Cloneable {
 
     int starComponentID;
 
-    int numberItems;
+    public int getStarComponentID() {
+		return starComponentID;
+	}
+
+	public void setStarComponentID(int starComponentID) {
+		this.starComponentID = starComponentID;
+	}
+
+	int noOfItems;
 
     int restorationCounter;
 
@@ -53,7 +61,7 @@ public abstract class StarMapComponent implements Cloneable {
     }
 
     //To check whether StarMap is encrypted by passed heroID or not.
-    abstract boolean isEncryptedByMe(int heroID);
+    abstract boolean ckhEncryptedBy(int heroID);
 
     //Encrypt the Map.
     abstract void encrypt(int heroID, Date date, char Symbol);

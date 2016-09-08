@@ -35,26 +35,26 @@ public class TMapBase extends Location {
             if (mapPresent) {
                 System.out.println("StarAtlas is present at " + "[" + this.gridLocation.getRow() + "," + this.gridLocation.getColumn() + "]");
                 if (starMap.isEncrypted()) {
-                    if (starMap.isEncryptedByMe(tHero.getId())) {
+                    if (starMap.ckhEncryptedBy(tHero.getId())) {
                         String s = "Hero enters MapBase and map is encrypted by him";
-                        System.out.println("Hero with heroId " + tHero.getId() + " enters MapBase and map is encrypted by him previously.");
+                        System.out.println("Hero with heroId " + tHero.getId() + " enters MapBase and map is encrypted by himself previously.");
                         CreateMessageUtility.createMsg(s);
                         starMap.decrypt(tHero.getId());
                         starMap.display();
                     } else {
-                        String s = "Hero enters MapBase and map encrypted by other hero";
+                        String s = "Hero enters MapBase and map encrypted by another hero";
                         System.out.println("Hero with heroId " + tHero.getId() + " enters MapBase and map is encrypted by other hero previously.");
                         CreateMessageUtility.createMsg(s);
                         starMap.encrypt(tHero.getId(), null, '\0');
                         starMap.display();
                     }
                 } else {
-                    String s = "Hero enters MapBase and there exists original non-encrypted map";
+                    String s = "Hero enters MapBase and there exists original non encrypted map";
                     System.out.println("Hero with heroId " + tHero.getId() + " enters MapBase and non-encrypted map is found in mapbase.");
                     CreateMessageUtility.createMsg(s);
                 }
             } else {
-                String s = "Hero enters MapBase, but there is no map";
+                String s = "Hero enters MapBase but there is no map";
                 System.out.println("Hero with heroId " + tHero.getId() + " enters MapBase but there is no map in mapbase.");
                 System.out.println("Hero with heroId " + tHero.getId() + " flies to VaderBase location to check if map is there.");
                 CreateMessageUtility.createMsg(s);
