@@ -16,7 +16,7 @@ public class TMapBase extends Location {
 
     @Override
     public String getImageName() {
-        return "mapBase.jpg";
+        return "MapBase.jpg";
     }
 
     @Override
