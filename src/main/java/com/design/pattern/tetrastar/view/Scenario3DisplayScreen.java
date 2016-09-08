@@ -2,15 +2,21 @@ package com.design.pattern.tetrastar.view;
 
 import com.design.pattern.tetrastar.enums.Direction;
 import com.design.pattern.tetrastar.enums.RoverTypes;
-import com.design.pattern.tetrastar.model.*;
+import com.design.pattern.tetrastar.model.TFaceGrid;
+import com.design.pattern.tetrastar.model.THeroBase;
+import com.design.pattern.tetrastar.model.TMapBase;
+import com.design.pattern.tetrastar.model.TVaderBase;
+import com.design.pattern.tetrastar.model.TetraPeopleFactory;
+import com.design.pattern.tetrastar.model.TetraPeopleObserverAndMediator;
+import com.design.pattern.tetrastar.model.TetraRover;
+import com.design.pattern.tetrastar.model.TetraRoverCareTaker;
 import com.design.pattern.tetrastar.util.CreateMessageUtility;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Image;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class Scenario3DisplayScreen extends GridDisplayScreen {
 
