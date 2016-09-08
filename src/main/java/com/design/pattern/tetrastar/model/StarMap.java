@@ -18,37 +18,21 @@ public class StarMap extends StarMapComponent {
 
     String body;
     EncryptionAlgorithm encryptionAlgo;
-    List<EncryptingHero> encryptedHeroes = new ArrayList<EncryptingHero>();
+    List<EncryptingHero> encHero = new ArrayList<EncryptingHero>();
     EncryptingHeroIterator encryptingHeroIterator;
 
-    /**
-     * Initializing StarMap.
-     *
-     * @param starMapID
-     * @param loc
-     * @param directions
-     */
+ 
     public StarMap(int starMapID, TFaceGrid loc, String directions) {
         this.starComponentID = starMapID;
         this.mapLocation = loc;
-        this.numberItems = 1;
+        this.noOfItems = 1;
         this.body = directions;
     }
 
-    /**
-     * Create Iterator for traversal.
-     *
-     * @param leh
-     */
     private void createIterator(List<EncryptingHero> listEncryptingHero) {
         encryptingHeroIterator = new EncryptingHeroIterator(listEncryptingHero);
     }
 
-    /**
-     * Get the message.
-     *
-     * @return
-     */
     String getBody() {
         return body;
     }
@@ -60,7 +44,7 @@ public class StarMap extends StarMapComponent {
         boolean alreadyEncrypted = false;
 
         if (encryptionStatus == true) {
-            createIterator(encryptedHeroes);
+            createIterator(encHero);
             encryptingHeroIterator.begin();
             while (encryptingHeroIterator.hasNext()) {
                 previousHero = (EncryptingHero) encryptingHeroIterator.next();
@@ -82,20 +66,16 @@ public class StarMap extends StarMapComponent {
 
         }
         if (encryptingHero != null) {
-            encryptedHeroes.add(encryptingHero);
+            encHero.add(encryptingHero);
         }
     }
 
-    /**
-     * Decrypt the StarMap.
-     *
-     * @param heroID
-     */
+    //Decrypt the StarMap.
     @Override
     public void decrypt(int heroID) {
         EncryptingHero previousHero;
 
-        createIterator(encryptedHeroes);
+        createIterator(encHero);
         encryptingHeroIterator.begin();
         while (encryptingHeroIterator.hasNext()) {
             previousHero = (EncryptingHero) encryptingHeroIterator.next();
@@ -110,17 +90,11 @@ public class StarMap extends StarMapComponent {
         }
     }
 
-    /**
-     * To check whether StarMap is encrypted by passed heroID or not.
-     *
-     * @param heroID
-     * @return
-     */
     @Override
-    boolean isEncryptedByMe(int heroID) {
+    boolean ckhEncryptedBy(int heroID) {
         EncryptingHero previousHero;
 
-        createIterator(encryptedHeroes);
+        createIterator(encHero);
         encryptingHeroIterator.begin();
         while (encryptingHeroIterator.hasNext()) {
             previousHero = (EncryptingHero) encryptingHeroIterator.next();
@@ -131,9 +105,7 @@ public class StarMap extends StarMapComponent {
         return false;
     }
 
-    /**
-     * Display the StarMap Contents.
-     */
+ 
     @Override
     public void display() {
         String message = null;
@@ -148,32 +120,24 @@ public class StarMap extends StarMapComponent {
         CreateMessageUtility.createMsg(message);
     }
 
-    /**
-     * Get the encrypted Symbol.
-     *
-     * @return
-     */
+
     @Override
     char getEncryptedSymbol() {
         EncryptingHero initialHero;
 
-        createIterator(encryptedHeroes);
+        createIterator(encHero);
         encryptingHeroIterator.begin();
         initialHero = (EncryptingHero) encryptingHeroIterator.next();
 
         return initialHero.getSymbol();
     }
 
-    /**
-     * To display the encrypted content.
-     *
-     * @return
-     */
+
     @Override
     String encryptedDisplay() {
 
         String message = "";
-        createIterator(encryptedHeroes);
+        createIterator(encHero);
         encryptingHeroIterator.begin();
         EncryptingHero initialHero = (EncryptingHero) encryptingHeroIterator.next();
         for (int i = 0; i < 50; ++i) {
@@ -196,12 +160,6 @@ public class StarMap extends StarMapComponent {
         return message;
     }
 
-    /**
-     * Set the encryption Algorithm.
-     *
-     * @param encryptAlgo
-     * @param encrypt
-     */
     @Override
     public void setEncryptionAlgorithm(EncryptionAlgorithm encryptAlgo) {
         this.encryptionAlgo = encryptAlgo;

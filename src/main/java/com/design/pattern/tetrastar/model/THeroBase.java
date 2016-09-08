@@ -34,7 +34,7 @@ public class THeroBase extends Location {
         if (tHero.getNewstarMap() != null) {
             starMap = tHero.getNewstarMap();
             String s = "Hero in HeroBase with Cloned Map";
-            System.out.println("Hero with heroId " + tHero.getId() + " is in HeroBase with Cloned Map.");
+            System.out.println("Hero with heroId " + tHero.getId() + " entered HeroBase with Cloned Map.");
             CreateMessageUtility.createMsg(s);
         } else {
             String s = "Hero in HeroBase ";

@@ -11,6 +11,7 @@ import com.design.pattern.tetrastar.enums.EncryptionStrategy;
 import com.design.pattern.tetrastar.enums.RoverTypes;
 import com.design.pattern.tetrastar.model.StarAtlasComposite;
 import com.design.pattern.tetrastar.model.StarMap;
+import com.design.pattern.tetrastar.model.StarMapComponentManager;
 import com.design.pattern.tetrastar.model.TFaceGrid;
 import com.design.pattern.tetrastar.model.THeroBase;
 import com.design.pattern.tetrastar.model.TMapBase;
@@ -81,7 +82,8 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
 
         /* Initializing StarMaps */
         /* StarAtlas - Case 1 */
-        starAtlas = new StarAtlasComposite(idGenerator.nextId(), tMapbLoc);
+        int idG = idGenerator.nextId();
+        starAtlas = new StarAtlasComposite(idG, tMapbLoc);
         starMap1 = new StarMap(idGenerator.nextId(), tMapLoc, "Direction to planet Earth!!");
         starMap2 = new StarMap(idGenerator.nextId(), tMapLoc, "Direction to planet Mars!!");
         /* Get the unique strategy of hero for encryption */
@@ -95,6 +97,7 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         starAtlas.setEncryptionAlgorithm(encryptionAlgo);
         //starAtlas.encrypt(hero1.getId(), new Date(), ((TetraHero)hero1).getSymbol());
         mapBaseLoc.setStarMapComponent(starAtlas);
+        StarMapComponentManager.addStarMapComponent(starAtlas.getStarComponentID(), starAtlas);
 
         /* Initializing Flier */
         try {
@@ -215,7 +218,9 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
 
         // Initializing StarMaps 
         // StarAtlas - Case 1 
-        StarAtlasComposite stAtlas1 = new StarAtlasComposite(idGenerator.nextId(), tMapLoc);
+        int idG = idGenerator.nextId();
+        StarAtlasComposite stAtlas1 = new StarAtlasComposite(idG, tMapLoc);
+        stAtlas1.setStarComponentID(idG);
         StarMap stMap1 = new StarMap(idGenerator.nextId(), tMapLoc, "Direction to planet Earth!!");
         StarMap stMap2 = new StarMap(idGenerator.nextId(), tMapLoc, "Direction to planet Mars!!");
         // Get the unique strategy of hero for encryption 
@@ -228,7 +233,9 @@ public class Scenario2DisplayScreen extends GridDisplayScreen {
         stAtlas1.setEncryptionAlgorithm(encryptionAlgo);
         stAtlas1.encrypt(hero1.getId(), new Date(), ((TetraHero) hero1).getSymbol());
         vaderBaseLoc.setStarMapComponent(stAtlas1);
-
+        
+        StarMapComponentManager.addStarMapComponent(stAtlas1.getStarComponentID(), stAtlas1);
+        
         CreateMessageUtility.createMsg("Hero demo");
         System.out.println("Hero demo \n");
 

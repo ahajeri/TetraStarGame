@@ -28,7 +28,7 @@ public class NullStarMap extends StarMapComponent {
      * Do Nothing.
      */
     @Override
-    boolean isEncryptedByMe(int heroID) {
+    boolean ckhEncryptedBy(int heroID) {
         return false;
     }
 

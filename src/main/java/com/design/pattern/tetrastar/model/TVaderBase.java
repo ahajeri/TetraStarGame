@@ -57,14 +57,10 @@ public class TVaderBase extends Location {
             System.out.println("Hero with heroId " + tHero.getId() + " finds out that map is present in VaderBase");
             CreateMessageUtility.createMsg(s);
             StarMapComponent newMap = null;
-            try {
-                // Clone the map
-                newMap = (StarMapComponent) starMap.clone();
-                System.out.println("Hero with heroId " + tHero.getId() + " clones the map that is present in VaderBase");
-            } catch (CloneNotSupportedException ex) {
-                System.err.println("Error Occurred " + ex.getMessage());
-                System.exit(1);
-            }
+            // Clone the map
+            newMap = StarMapComponentManager.getStarMapComponent(starMap.getStarComponentID());
+            System.out.println("Hero with heroId " + tHero.getId() + " clones the map that is present in VaderBase");
+
             // Get encryption strategy for hero
             EncryptionStrategy encryptionStrategy = tHero.getEncryptionStrategy();
             // Use Factory Method pattern to get Encryption algorithm to be used

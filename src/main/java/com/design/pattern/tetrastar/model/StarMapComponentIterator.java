@@ -13,39 +13,28 @@ import java.util.List;
  */
 public class StarMapComponentIterator extends TIterator {
 
-    /**
-     * Aggregate List.
-     */
-    List<StarMapComponent> lsmc;
+ 
+    List<StarMapComponent> listStarMapComponent;
 
     StarMapComponentIterator(List<StarMapComponent> lsmc) {
-        this.lsmc = lsmc;
+        this.listStarMapComponent = lsmc;
         this.currentPosition = 0;
     }
 
-    /**
-     * Get the size of Aggregate.
-     */
     @Override
     public int getSize() {
-        return lsmc.size();
+        return listStarMapComponent.size();
     }
 
-    /**
-     * Get the next Aggregate Element.
-     */
     @Override
     public Object next() {
-        return lsmc.get(currentPosition++);
+        return listStarMapComponent.get(currentPosition++);
     }
 
-    /**
-     * Remove the next Aggregate Element.
-     */
     @Override
     public void remove() {
         try {
-            lsmc.remove(currentPosition--);
+            listStarMapComponent.remove(currentPosition--);
         } catch (UnsupportedOperationException e) {
             System.err.println("Error occurred " + e.getMessage());
             System.exit(1);
